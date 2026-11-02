@@ -1,0 +1,12 @@
+{
+  "exact_or_group_intersections": 0,
+  "n_train_index": 15336,
+  "n_golden": 50,
+  "n_behavioral": 3,
+  "raw_train_rows": 15336,
+  "tokenized_train_rows": 15257,
+  "dropped_by_hw4_tokenizer": 79,
+  "all_tensor_ids_in_raw": true,
+  "tensor_hashes_match_hw4": true,
+  "note": "HW4 dropped 79 rows without supervised answer tokens; full raw index retains these rows."
+}

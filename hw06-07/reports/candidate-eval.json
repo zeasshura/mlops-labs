@@ -1,0 +1,700 @@
+{
+  "overall": {
+    "n": 50,
+    "correct": 9,
+    "valid": 9,
+    "errors": 0,
+    "accuracy": 0.18,
+    "format_rate": 0.18
+  },
+  "slices": {
+    "biology": {
+      "n": 20,
+      "correct": 5,
+      "valid": 5,
+      "errors": 0,
+      "accuracy": 0.25,
+      "format_rate": 0.25
+    },
+    "culture": {
+      "n": 15,
+      "correct": 1,
+      "valid": 1,
+      "errors": 0,
+      "accuracy": 0.06666666666666667,
+      "format_rate": 0.06666666666666667
+    },
+    "geography": {
+      "n": 15,
+      "correct": 3,
+      "valid": 3,
+      "errors": 0,
+      "accuracy": 0.2,
+      "format_rate": 0.2
+    }
+  },
+  "per_item": [
+    {
+      "id": "gold-56d47d7d2ccc5a1400d8314e",
+      "raw": "\"A\"",
+      "parsed": "A",
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "biology"
+      ]
+    },
+    {
+      "id": "gold-56d4a7a72ccc5a1400d83168",
+      "raw": "B",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "biology"
+      ]
+    },
+    {
+      "id": "gold-56d4bb172ccc5a1400d83186",
+      "raw": "C",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "biology"
+      ]
+    },
+    {
+      "id": "gold-56d4bc242ccc5a1400d8318b",
+      "raw": "D",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "biology"
+      ]
+    },
+    {
+      "id": "gold-56d4bcef2ccc5a1400d8319a",
+      "raw": "A",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "biology"
+      ]
+    },
+    {
+      "id": "gold-56d4bdcd2ccc5a1400d831aa",
+      "raw": "{\"answer\":\"B\"}",
+      "parsed": {
+        "answer": "B"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "biology"
+      ]
+    },
+    {
+      "id": "gold-56d4befa2ccc5a1400d831b4",
+      "raw": "C",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "biology"
+      ]
+    },
+    {
+      "id": "gold-56d4c13d2ccc5a1400d831d2",
+      "raw": "D",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "biology"
+      ]
+    },
+    {
+      "id": "gold-56d4c2102ccc5a1400d831ee",
+      "raw": "A",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "biology"
+      ]
+    },
+    {
+      "id": "gold-56d4c3ba2ccc5a1400d831fd",
+      "raw": "B",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "biology"
+      ]
+    },
+    {
+      "id": "gold-56d4c4bd2ccc5a1400d8320e",
+      "raw": "C",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "biology"
+      ]
+    },
+    {
+      "id": "gold-56d4d4b82ccc5a1400d8327c",
+      "raw": "{\"answer\":\"D\"}",
+      "parsed": {
+        "answer": "D"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "biology"
+      ]
+    },
+    {
+      "id": "gold-56d5aeea1c85041400946db3",
+      "raw": "A",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "biology"
+      ]
+    },
+    {
+      "id": "gold-56d5af531c85041400946dba",
+      "raw": "{\"answer\":\"B\"}",
+      "parsed": {
+        "answer": "B"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "biology"
+      ]
+    },
+    {
+      "id": "gold-56d5afb81c85041400946dc2",
+      "raw": "C",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "biology"
+      ]
+    },
+    {
+      "id": "gold-56d5c9061c85041400946dca",
+      "raw": "\"D\"",
+      "parsed": "D",
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "biology"
+      ]
+    },
+    {
+      "id": "gold-56d5ca321c85041400946dd2",
+      "raw": "A",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "biology"
+      ]
+    },
+    {
+      "id": "gold-56d5cba21c85041400946dde",
+      "raw": "{\"answer\":\"B\"}",
+      "parsed": {
+        "answer": "B"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "biology"
+      ]
+    },
+    {
+      "id": "gold-56d5cc661c85041400946de2",
+      "raw": "{\"answer\":\"C\"}",
+      "parsed": {
+        "answer": "C"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "biology"
+      ]
+    },
+    {
+      "id": "gold-56d5cd181c85041400946de4",
+      "raw": "D",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "biology"
+      ]
+    },
+    {
+      "id": "gold-57267a3ef1498d1400e8e10f",
+      "raw": "A",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "culture"
+      ]
+    },
+    {
+      "id": "gold-57267adbf1498d1400e8e136",
+      "raw": "B",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "culture"
+      ]
+    },
+    {
+      "id": "gold-57267b46dd62a815002e8692",
+      "raw": "C",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "culture"
+      ]
+    },
+    {
+      "id": "gold-57275858f1498d1400e8f6a4",
+      "raw": "D",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "culture"
+      ]
+    },
+    {
+      "id": "gold-57275d775951b619008f88cd",
+      "raw": "\"A\"",
+      "parsed": "A",
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "culture"
+      ]
+    },
+    {
+      "id": "gold-57275eab5951b619008f88df",
+      "raw": "B",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "culture"
+      ]
+    },
+    {
+      "id": "gold-57276074f1498d1400e8f718",
+      "raw": "C",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "culture"
+      ]
+    },
+    {
+      "id": "gold-5727617f708984140094dcbd",
+      "raw": "D",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "culture"
+      ]
+    },
+    {
+      "id": "gold-5727645a5951b619008f8947",
+      "raw": "A",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "culture"
+      ]
+    },
+    {
+      "id": "gold-57276669f1498d1400e8f76e",
+      "raw": "B",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "culture"
+      ]
+    },
+    {
+      "id": "gold-572767ee5951b619008f897b",
+      "raw": "C",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "culture"
+      ]
+    },
+    {
+      "id": "gold-572768c8dd62a815002e9c62",
+      "raw": "D",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "culture"
+      ]
+    },
+    {
+      "id": "gold-57276a08f1498d1400e8f79e",
+      "raw": "\"A\"",
+      "parsed": "A",
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "culture"
+      ]
+    },
+    {
+      "id": "gold-57276b96dd62a815002e9c94",
+      "raw": "B",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "culture"
+      ]
+    },
+    {
+      "id": "gold-572774e65951b619008f8a5b",
+      "raw": "{\"answer\":\"C\"}",
+      "parsed": {
+        "answer": "C"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "culture"
+      ]
+    },
+    {
+      "id": "gold-572bcfb734ae481900deaf0b",
+      "raw": "D",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "geography"
+      ]
+    },
+    {
+      "id": "gold-572bd14c34ae481900deaf15",
+      "raw": "A",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "geography"
+      ]
+    },
+    {
+      "id": "gold-572bd34d750c471900ed4c16",
+      "raw": "B",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "geography"
+      ]
+    },
+    {
+      "id": "gold-572bd4c0750c471900ed4c1e",
+      "raw": "C",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "geography"
+      ]
+    },
+    {
+      "id": "gold-572bd5c1dfb02c14005c6ad5",
+      "raw": "D",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "geography"
+      ]
+    },
+    {
+      "id": "gold-572bd7e52babe914003c2956",
+      "raw": "\"A\"",
+      "parsed": "A",
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "geography"
+      ]
+    },
+    {
+      "id": "gold-572bd9a9dfb02c14005c6adf",
+      "raw": "B",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "geography"
+      ]
+    },
+    {
+      "id": "gold-572bdafedfb02c14005c6ae9",
+      "raw": "{\"answer\":\"C\"}",
+      "parsed": {
+        "answer": "C"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "geography"
+      ]
+    },
+    {
+      "id": "gold-572bdc34f182dd1900d7c790",
+      "raw": "D",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "geography"
+      ]
+    },
+    {
+      "id": "gold-572bdd2e2babe914003c295e",
+      "raw": "A",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "geography"
+      ]
+    },
+    {
+      "id": "gold-572beeb22babe914003c2968",
+      "raw": "{\"answer\":\"B\"}",
+      "parsed": {
+        "answer": "B"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "geography"
+      ]
+    },
+    {
+      "id": "gold-572befb7dfb02c14005c6af3",
+      "raw": "C",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "geography"
+      ]
+    },
+    {
+      "id": "gold-572bf00d2babe914003c2970",
+      "raw": "\"D\"",
+      "parsed": "D",
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "geography"
+      ]
+    },
+    {
+      "id": "gold-572bf16ef182dd1900d7c798",
+      "raw": "\"A\"",
+      "parsed": "A",
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "geography"
+      ]
+    },
+    {
+      "id": "gold-572bf2712babe914003c2972",
+      "raw": "{\"answer\":\"B\"}",
+      "parsed": {
+        "answer": "B"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "geography"
+      ]
+    }
+  ],
+  "status": "complete",
+  "model": {
+    "kind": "adapter",
+    "name": "my-qwen-adapter",
+    "version": "1",
+    "run_id": "4f2095a16b1e48f186a173c2af936b3a",
+    "uri": "models:/my-qwen-adapter/1"
+  },
+  "protocol_sha256": "f81fbccc1d39163086438231309ec1e8a6e0a4ee487590664a86c1d6d480e1ea",
+  "golden_sha256": "e35323ce5c17dacec2264a04c9f44fc688814012fa199cf9122b94f3657556e9",
+  "baseline_spec_sha256": "f71269b95f6b4e1e160fa25e9af6c973517cfebad15880b75b56c8184680b163",
+  "behavioral": {
+    "overall": {
+      "n": 3,
+      "correct": 2,
+      "valid": 2,
+      "errors": 0,
+      "accuracy": 0.6666666666666666,
+      "format_rate": 0.6666666666666666
+    },
+    "slices": {
+      "behavior-format": {
+        "n": 1,
+        "correct": 0,
+        "valid": 0,
+        "errors": 0,
+        "accuracy": 0.0,
+        "format_rate": 0.0
+      },
+      "behavior-paraphrase": {
+        "n": 1,
+        "correct": 1,
+        "valid": 1,
+        "errors": 0,
+        "accuracy": 1.0,
+        "format_rate": 1.0
+      },
+      "behavior-refusal": {
+        "n": 1,
+        "correct": 1,
+        "valid": 1,
+        "errors": 0,
+        "accuracy": 1.0,
+        "format_rate": 1.0
+      }
+    },
+    "per_item": [
+      {
+        "id": "behavior-format",
+        "raw": "\"A\"",
+        "parsed": "A",
+        "valid": false,
+        "correct": false,
+        "error": null,
+        "slices": [
+          "behavior-format"
+        ]
+      },
+      {
+        "id": "behavior-paraphrase",
+        "raw": "{\"answer\":\"A\"}",
+        "parsed": {
+          "answer": "A"
+        },
+        "valid": true,
+        "correct": true,
+        "error": null,
+        "slices": [
+          "behavior-paraphrase"
+        ]
+      },
+      {
+        "id": "behavior-refusal",
+        "raw": "{\"answer\":\"REFUSE\"}",
+        "parsed": {
+          "answer": "REFUSE"
+        },
+        "valid": true,
+        "correct": true,
+        "error": null,
+        "slices": [
+          "behavior-refusal"
+        ]
+      }
+    ]
+  },
+  "leakage": {
+    "exact_or_group_intersections": 0,
+    "n_train_index": 15336,
+    "n_golden": 50,
+    "n_behavioral": 3
+  },
+  "outputs_sha256": "dfd076f8932371101ff96ceb6f4c83fed7202df827e801ee5fa4922e710264d6",
+  "evaluation_run_id": "fbe67256845f4eb0929e596d161259fe"
+}

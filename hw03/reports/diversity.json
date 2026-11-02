@@ -1,0 +1,30 @@
+{
+  "version": "v2",
+  "examples": 19387,
+  "system_prompts": 5,
+  "groups": 90,
+  "largest_group": "super_bowl_50",
+  "largest_group_share": 0.0407,
+  "answer_len": {
+    "p10": 4,
+    "p50": 13,
+    "p90": 43,
+    "ratio_p90_p10": 10.75,
+    "cv": 1.09,
+    "min": 2,
+    "max": 160
+  },
+  "same_length_share": 0.0819,
+  "duplicate_answer_share": 0.204,
+  "thresholds": {
+    "min_examples": 1000,
+    "min_system_prompts": 3,
+    "min_groups": 50,
+    "max_group_share": 0.1,
+    "min_answer_len_ratio": 1.6,
+    "max_same_length_share": 0.25,
+    "max_duplicate_answer_share": 0.3
+  },
+  "violations": [],
+  "passed": true
+}

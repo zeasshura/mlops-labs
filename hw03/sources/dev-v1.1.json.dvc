@@ -1,0 +1,5 @@
+outs:
+- md5: 3e85deb501d4e538b6bc56f786231552
+  size: 4854279
+  hash: md5
+  path: dev-v1.1.json

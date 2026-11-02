@@ -1,0 +1,11 @@
+[project]
+name = "mlops-hw3-squad"
+version = "0.1.0"
+description = "ДЗ 3: проверяемые ответы по абзацам Википедии, DVC и честный сплит"
+requires-python = ">=3.12"
+dependencies = [
+    "dvc>=3.55",
+    "pydantic>=2.9",
+    "datasketch>=1.6",
+    "pyyaml>=6.0",
+]

@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "uri": "models:/my-qwen-adapter/1",
+  "isolated": true,
+  "offline_base": true,
+  "prompt": "Passage: Tucson is the second-largest city in Arizona behind Phoenix. Question: What is the largest city in Arizona?",
+  "expected": "Phoenix",
+  "actual": "Phoenix"
+}

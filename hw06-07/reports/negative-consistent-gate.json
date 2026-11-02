@@ -1,0 +1,14 @@
+{
+  "rejected": true,
+  "reason": "Регрессия общей метрики accuracy",
+  "overall": {
+    "n": 50,
+    "correct": 0,
+    "valid": 50,
+    "errors": 0,
+    "accuracy": 0.0,
+    "format_rate": 1.0
+  },
+  "original_outputs_unchanged": true,
+  "note": "Only a copy was corrupted; valid JSON labels deliberately changed to wrong labels. Counts remain consistent. No model generation or alias mutation."
+}

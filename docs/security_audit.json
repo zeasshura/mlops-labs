@@ -1,0 +1,11 @@
+{
+  "scanner": "Gitleaks 8.30.1; official archive checksum verified",
+  "scan": "Exact staged snapshot, default rules, no project allowlists, archive depth 3",
+  "detected_secrets": 0,
+  "files_checked": 192,
+  "source_config_test_hashes_verified": 64,
+  "python_files_syntax_checked": 71,
+  "excluded": "Models, raw data, caches, environments, private paths, runtime artifacts",
+  "scope": "Imported current snapshots only; old repository histories were not fully scanned",
+  "coursework_checks": "make check and video remain with the owner"
+}

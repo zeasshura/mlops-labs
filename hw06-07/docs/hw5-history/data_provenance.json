@@ -1,0 +1,10 @@
+{
+  "train.pt": {
+    "sha256": "8eebd546b6f8adf63ae27409973008009f93421f2afdd9eb668b7e51778a3e25",
+    "source": "../mlops_hw4/data/tokenized/train.pt"
+  },
+  "val.pt": {
+    "sha256": "52e8db25f7b0f35fbd9a9e159e534e660ca0f946f6e6ea92505486559fc83da5",
+    "source": "../mlops_hw4/data/tokenized/val.pt"
+  }
+}

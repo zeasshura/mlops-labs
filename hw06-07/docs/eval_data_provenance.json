@@ -1,0 +1,13 @@
+{
+  "source_train": "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops_hw4/data/train.jsonl",
+  "source_val": "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops_hw4/data/val.jsonl",
+  "source_hashes": {
+    "train.jsonl": "ce784ddc1ca4cb183497802f1628d16f2b465901b20a974171af00aeda2bd461",
+    "val.jsonl": "df0f4b577cc89ce306b11eda1317173121d13f9835e9d44b7efc742972d52af3"
+  },
+  "training_index_n": 15336,
+  "golden_n": 50,
+  "golden_source": "held-out articles, one question per passage",
+  "review": "Question, answer span, distractors and ambiguity inspected by assistant. Not an independent human audit.",
+  "tokenization_source": "HW4 src/tokenize_data.py, IDs retained in train.pt; see scripts/verify_data.py"
+}

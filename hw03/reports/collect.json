@@ -1,0 +1,9 @@
+{
+  "version": "v2",
+  "source_files": 2,
+  "groups": 90,
+  "system_prompt_variants": 5,
+  "articles_selected": 90,
+  "questions_scanned": 19511,
+  "rows_written": 19511
+}

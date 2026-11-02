@@ -1,0 +1,59 @@
+{
+  "state": "completed",
+  "started_utc": "2026-10-22T21:40:08.781383+00:00",
+  "stages": [
+    {
+      "name": "sweep",
+      "exit_code": 0,
+      "log": "logs/sweep.log"
+    },
+    {
+      "name": "report",
+      "exit_code": 0,
+      "log": "logs/report.log"
+    },
+    {
+      "name": "candidate",
+      "exit_code": 0,
+      "log": "logs/candidate.log"
+    },
+    {
+      "name": "baseline-init",
+      "exit_code": 0,
+      "log": "logs/baseline-init.log"
+    },
+    {
+      "name": "evaluate",
+      "exit_code": 0,
+      "log": "logs/evaluate.log"
+    },
+    {
+      "name": "quality-gate",
+      "exit_code": 1,
+      "log": "logs/quality-gate.log"
+    },
+    {
+      "name": "negative-gate",
+      "exit_code": 0,
+      "log": "logs/negative-gate.log"
+    },
+    {
+      "name": "storage-proof",
+      "exit_code": 1,
+      "log": "logs/storage-proof.log"
+    },
+    {
+      "name": "storage-proof",
+      "exit_code": 0,
+      "log": "logs/storage-proof.log"
+    },
+    {
+      "name": "finalize",
+      "exit_code": 0,
+      "log": "logs/finalize.log"
+    }
+  ],
+  "current_stage": "finalize",
+  "check": "manual_pending",
+  "finished_utc": "2026-10-22T22:12:35.320897+00:00"
+}

@@ -1,0 +1,18 @@
+{
+  "variant": "all_layers",
+  "adapter_dir": "models/adapter_all_layers",
+  "base": [
+    "The largest populated city in Arizona is Phoenix.",
+    "60 mi (97 km)",
+    "Optics Valley",
+    "520,116",
+    "996,544."
+  ],
+  "adapter": [
+    "Phoenix",
+    "60 mi",
+    "Optics Valley",
+    "520,116",
+    "996,544"
+  ]
+}

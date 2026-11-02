@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Prefer system Docker; otherwise use the real rootless Podman engine.
+set -euo pipefail
+if [[ -x /usr/bin/docker ]]; then
+  exec /usr/bin/docker "$@"
+fi
+export PODMAN_COMPOSE_PROVIDER="$(cd "$(dirname "$0")" && pwd)/docker-compose"
+export PODMAN_COMPOSE_WARNING_LOGS=false
+exec podman "$@"

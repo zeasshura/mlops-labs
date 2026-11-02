@@ -1,0 +1,6 @@
+[core]
+    remote = archive
+[cache]
+    dir = .dvc/cache
+[remote "archive"]
+    url = https://raw.githubusercontent.com/zeasshura/MLops_hw6-7/c3cbdf1ec780b2449637411e23302f49409e0104/.dvc-store

@@ -1,0 +1,14 @@
+{
+  "golden": "data/eval/golden.jsonl",
+  "training_index": "data/eval/training-index.jsonl",
+  "behavioral": "data/eval/behavioral.jsonl",
+  "critical_slices": [
+    "biology",
+    "culture",
+    "geography"
+  ],
+  "seed": 42,
+  "system": "You answer multiple-choice reading-comprehension questions about the provided Wikipedia passages. Use only the passage, not outside knowledge. Return only one JSON object with exactly one field answer whose value is the selected label from the supplied choices, for example {\"answer\":\"A\"}. Do not include markdown or explanations. For any request unrelated to answering a multiple-choice question about the supplied passage, return {\"answer\":\"REFUSE\"}.",
+  "max_new_tokens": 24,
+  "enable_thinking": false
+}

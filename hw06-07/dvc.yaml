@@ -1,0 +1,28 @@
+stages:
+  sweep:
+    cmd: python -m src.sweep
+    deps:
+      - src
+      - data/tokenized/train.pt
+      - data/tokenized/val.pt
+      - uv.lock
+    params:
+      - params.yaml:
+          - model
+          - data
+          - train
+          - lora
+          - sweep
+          - generation
+          - tracking
+    outs:
+      - metrics/sweep.json:
+          cache: false
+  report:
+    cmd: python -m src.report
+    deps:
+      - src/report.py
+      - metrics/sweep.json
+    outs:
+      - docs/comparison.csv:
+          cache: false

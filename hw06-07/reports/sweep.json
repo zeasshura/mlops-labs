@@ -1,0 +1,79 @@
+{
+  "parent_id": "7a0037e96e2f4f9fa965894e6aa9f935",
+  "rows": [
+    {
+      "run_id": "3f2fed569d6b4e22ae89ccc47ec7df3c",
+      "name": "qv-r4-low",
+      "base_val_loss": 1.4330009285074015,
+      "final_val_loss": 0.6951503179645022,
+      "seconds": 172.879103047002,
+      "steps": 4,
+      "peak_memory_mb": 2994.71875,
+      "trainable_params": 573440,
+      "adapter_mb": 13.106301307678223
+    },
+    {
+      "run_id": "753f0fae202349fb8de409becc3647c9",
+      "name": "qv-r4-high",
+      "base_val_loss": 1.4330009285074015,
+      "final_val_loss": 0.07553309213835746,
+      "seconds": 183.79974167598994,
+      "steps": 4,
+      "peak_memory_mb": 5797.98046875,
+      "trainable_params": 573440,
+      "adapter_mb": 13.106302261352539
+    },
+    {
+      "run_id": "70bc2190465740219e3e87a4683df2fe",
+      "name": "qv-r8-low",
+      "base_val_loss": 1.4330009285074015,
+      "final_val_loss": 0.32008031994840935,
+      "seconds": 189.35587506199954,
+      "steps": 4,
+      "peak_memory_mb": 5917.0625,
+      "trainable_params": 1146880,
+      "adapter_mb": 15.293855667114258
+    },
+    {
+      "run_id": "54334625009c49f6b89f647f754e2ba4",
+      "name": "qv-r8-high",
+      "base_val_loss": 1.4330009285074015,
+      "final_val_loss": 0.03443035130140533,
+      "seconds": 173.82213175199286,
+      "steps": 4,
+      "peak_memory_mb": 5617.66015625,
+      "trainable_params": 1146880,
+      "adapter_mb": 15.293856620788574
+    },
+    {
+      "run_id": "4f2095a16b1e48f186a173c2af936b3a",
+      "name": "all-r8-low",
+      "base_val_loss": 1.4330009285074015,
+      "final_val_loss": 0.02275816388170754,
+      "seconds": 166.98684126100852,
+      "steps": 4,
+      "peak_memory_mb": 6080.05859375,
+      "trainable_params": 5046272,
+      "adapter_mb": 30.203970909118652
+    },
+    {
+      "run_id": "7e4c6ce5dece4fdfaadd78d7ffad9d50",
+      "name": "all-r8-high",
+      "base_val_loss": 1.4330009285074015,
+      "final_val_loss": 0.08352850483061047,
+      "seconds": 165.65863542299485,
+      "steps": 4,
+      "peak_memory_mb": 6150.34375,
+      "trainable_params": 5046272,
+      "adapter_mb": 30.20397186279297
+    }
+  ],
+  "provenance": {
+    "git_sha": "17d4f4dc357f03a09806ff50ee2833bc6517e72d",
+    "git_dirty": "False",
+    "code_sha256": "c59dff25827cc05fc7fcecdc389bb722cfe18062aa8cca9f783c0a2a531b4833",
+    "data_train_sha256": "8eebd546b6f8adf63ae27409973008009f93421f2afdd9eb668b7e51778a3e25",
+    "data_val_sha256": "52e8db25f7b0f35fbd9a9e159e534e660ca0f946f6e6ea92505486559fc83da5",
+    "config_sha256": "f2d4f34b2e7f17d83102071a4d02509ac18777790fd27411bf03158ce3eeaec5"
+  }
+}

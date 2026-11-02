@@ -1,0 +1,103 @@
+stages:
+  collect:
+    cmd: python -m src.collect
+    deps:
+      - sources/train-v1.1.json
+      - sources/dev-v1.1.json
+      - src/collect.py
+      - src/config.py
+    params:
+      - collect
+      - paths.raw
+      - paths.metrics_collect
+    outs:
+      - data/raw.jsonl
+    metrics:
+      - metrics/collect.json:
+          cache: false
+
+  clean:
+    cmd: python -m src.clean
+    deps:
+      - data/raw.jsonl
+      - src/clean.py
+      - src/dedup.py
+      - src/pii.py
+      - src/schema.py
+      - src/stats.py
+      - src/textnorm.py
+      - src/config.py
+    params:
+      - clean
+      - paths.raw
+      - paths.clean
+      - paths.metrics_clean
+    outs:
+      - data/clean.jsonl
+    metrics:
+      - metrics/clean.json:
+          cache: false
+
+  diversity:
+    cmd: python -m src.diversity
+    deps:
+      - data/clean.jsonl
+      - src/diversity.py
+      - src/stats.py
+      - src/schema.py
+      - src/textnorm.py
+      - src/config.py
+    params:
+      - diversity
+      - split.group_key
+      - paths.clean
+      - paths.metrics_diversity
+    metrics:
+      - metrics/diversity.json:
+          cache: false
+
+  split:
+    cmd: python -m src.split
+    deps:
+      - data/clean.jsonl
+      - metrics/diversity.json
+      - src/split.py
+      - src/contamination.py
+      - src/dedup.py
+      - src/schema.py
+      - src/textnorm.py
+      - src/config.py
+    params:
+      - split
+      - clean.near_dup
+      - contamination
+      - paths.train
+      - paths.val
+      - paths.test
+      - paths.metrics_split
+    outs:
+      - data/train.jsonl
+      - data/val.jsonl
+      - data/test.jsonl
+    metrics:
+      - metrics/split.json:
+          cache: false
+
+  contamination:
+    cmd: python scripts/check_contamination.py
+    deps:
+      - data/train.jsonl
+      - data/val.jsonl
+      - data/test.jsonl
+      - scripts/check_contamination.py
+      - src/contamination.py
+      - src/dedup.py
+      - src/schema.py
+      - src/textnorm.py
+      - src/config.py
+    params:
+      - clean.near_dup
+      - contamination
+      - paths.train
+      - paths.val
+      - paths.test
