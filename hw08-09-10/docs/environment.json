@@ -1,0 +1,19 @@
+{
+  "python": "3.12.15",
+  "platform": "Linux-7.2.8-200.fc44.x86_64-x86_64-with-glibc2.43",
+  "logical_cpus": 8,
+  "available_cpus": 8,
+  "memory_gib": 15.27,
+  "model_threads": 4,
+  "packages": {
+    "prefect": "3.6.6",
+    "fastapi": "0.118.3",
+    "starlette": "0.48.0",
+    "uvicorn": "0.54.0",
+    "pydantic": "2.14.2",
+    "torch": "2.14.0+cpu",
+    "transformers": "5.17.0",
+    "peft": "0.21.0",
+    "mlflow": "2.22.2"
+  }
+}

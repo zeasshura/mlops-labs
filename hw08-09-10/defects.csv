@@ -1,8 +1,8 @@
-id,symptom,reproduce,expected,observed,root_cause,fix_commit,regression_test,before_log,after_log
-1,,,,,,,,,
-2,,,,,,,,,
-3,,,,,,,,,
-4,,,,,,,,,
-5,,,,,,,,,
-6,,,,,,,,,
-7,,,,,,,,,
+id,symptom,reproduce,expected,observed,root_cause,fix,regression_test,before_log,after_log,fix_commit
+1,Stale preparation after bytes/config change,lab.py run; change input.txt/config.json; run,New preparation for content/config; cache after restart,Old cache reused,Key hashed file path only,release.cache_key canonical content+all config,test_01_cache_resume_and_changed_bytes_subprocess; test_02_each_preparation_setting_invalidates_subprocess,docs/evidence/before.txt,docs/evidence/after-stdlib.txt; docs/evidence/after-fastapi.txt,hw08-10-fixed
+2,Incomplete/foreign/NaN report admitted,lab.py run --report report-incomplete.json; report-A.json; nan.json,Nonzero exit; pointer bytes unchanged,Truthy passed string accepted,Only report truthiness checked,"Strict full schema, finite metrics, runtime and model binding",test_03_incomplete_foreign_nan_reports_subprocess,docs/evidence/before.txt,docs/evidence/after-stdlib.txt; docs/evidence/after-fastapi.txt,hw08-10-fixed
+3,Disk failure can truncate pointer,mock os.replace failure during publish,Exception; old bytes unchanged; temp removed,Direct write bypasses atomic replace,accepted.json written in place,"Same-directory temp, flush/fsync, os.replace and cleanup",test_04_rejection_and_mock_disk_failure,docs/evidence/before.txt,docs/evidence/after-stdlib.txt; docs/evidence/after-fastapi.txt,hw08-10-fixed
+4,Repeated run duplicates publication,lab.py run twice in distinct processes,One release event; pointer/ledger consistent after crash,Two append records,No release identity or recovery intent,Identity binds manifest+report; atomic ledger; recover pending intent,test_05_identical_publication_after_process_restart; test_pointer_ledger_crash_recovers_once,docs/evidence/before.txt,docs/evidence/after-stdlib.txt; docs/evidence/after-fastapi.txt,hw08-10-fixed
+5,Service ready before warmup,service.py --warmup-seconds 2; GET ready; POST generate,503 until backend warmup complete,200 before warmup,ready initialized True,Background load/warmup and readiness flag set at end,test_06_http_readiness_before_warmup,docs/evidence/before.txt,docs/evidence/after-stdlib.txt; docs/evidence/after-fastapi.txt,hw08-10-fixed
+6,Version advertised differs from loaded weights,Start A; publish B; generate; restart B; restore/restart A,Loaded A before reload; B after restart; then A,B metadata with A answer,Per-request pointer reread instead of loaded backend identity,Response identity from immutable loaded backend snapshot,test_07_http_loaded_version_publish_restart_and_rollback,docs/evidence/before.txt,docs/evidence/after-stdlib.txt; docs/evidence/after-fastapi.txt,hw08-10-fixed
+7,Invalid request invokes backend,Empty prompt; tokens 0/100000/string; compare debug.calls,"4xx, calls unchanged; valid request succeeds",Invalid request accepted and calls increment,No request validation before generate,Strict shared validation before queue/backend; evaluated limits enforced,test_08_http_validation_precedes_backend_call,docs/evidence/before.txt,docs/evidence/after-stdlib.txt; docs/evidence/after-fastapi.txt,hw08-10-fixed

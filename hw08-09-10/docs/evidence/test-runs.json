@@ -1,0 +1,75 @@
+{
+  "original_commit": "f40eae0",
+  "runs": [
+    {
+      "label": "before",
+      "command": [
+        "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/tests_integration",
+        "-v"
+      ],
+      "exit_code": 1,
+      "seconds": 3.881764577003196
+    },
+    {
+      "label": "before-contracts",
+      "command": [
+        "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "/tmp/hw8910-original-5rdp2c73/tests",
+        "-v"
+      ],
+      "exit_code": 1,
+      "seconds": 0.46084969700314105
+    },
+    {
+      "label": "contracts",
+      "command": [
+        "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.19386035902425647
+    },
+    {
+      "label": "after-stdlib",
+      "command": [
+        "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/tests_integration",
+        "-v"
+      ],
+      "exit_code": 0,
+      "seconds": 6.936243805976119
+    },
+    {
+      "label": "after-fastapi",
+      "command": [
+        "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/tests_integration",
+        "-v"
+      ],
+      "exit_code": 0,
+      "seconds": 11.519294963974971
+    }
+  ]
+}

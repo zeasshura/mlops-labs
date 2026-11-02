@@ -1,0 +1,12 @@
+06:55:28.784 | INFO    | Flow run 'sepia-hare' - Beginning flow run 'sepia-hare' for flow 'validated-model-release'
+06:55:28.792 | INFO    | Flow run 'sepia-hare' - View at http://127.0.0.1:4208/runs/flow-run/7e18af1e-16c8-4aa7-a2e4-b19d5e7f8391
+06:55:29.267 | INFO    | Task run 'prepare_data-02e' - PREPARED e554dc5d64bf402d76ab3526611352173cc7004ab1aa97a6f58932f7ad42d730
+06:55:29.278 | INFO    | Task run 'prepare_data-02e' - Finished in state Completed()
+06:55:29.280 | INFO    | Flow run 'sepia-hare' - PREPARATION_DESCRIPTOR {'cache_key': 'e554dc5d64bf402d76ab3526611352173cc7004ab1aa97a6f58932f7ad42d730', 'artifact_uri': '/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.runtime/real/cache/e554dc5d64bf402d76ab3526611352173cc7004ab1aa97a6f58932f7ad42d730.json'}
+06:55:33.526 | INFO    | Task run 'obtain_artifact-fd2' - Finished in state Completed()
+06:55:34.199 | INFO    | Task run 'evaluate_admission-f86' - Finished in state Completed()
+06:55:38.199 | INFO    | Task run 'publish_release-9ff' - Finished in state Completed()
+06:55:38.200 | INFO    | Flow run 'sepia-hare' - RELEASE {'release_id': '7afce8252e174c2a2fdde6ab6510c0cd373dc3c36bf5866d385b7e0def45b198', 'model_id': 'qwen3-baseline-c1899de289a04d12100db370d81485cdf75e47ca', 'new_event': True}
+06:55:38.224 | INFO    | Flow run 'sepia-hare' - Finished in state Completed()
+
+EXIT_CODE=0

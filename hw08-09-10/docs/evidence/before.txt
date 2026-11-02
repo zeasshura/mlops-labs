@@ -1,0 +1,87 @@
+test_01_cache_resume_and_changed_bytes_subprocess (test_incidents.Incidents.test_01_cache_resume_and_changed_bytes_subprocess) ... FAIL
+test_02_each_preparation_setting_invalidates_subprocess (test_incidents.Incidents.test_02_each_preparation_setting_invalidates_subprocess) ... FAIL
+test_03_incomplete_foreign_nan_reports_subprocess (test_incidents.Incidents.test_03_incomplete_foreign_nan_reports_subprocess) ... FAIL
+test_04_rejection_and_mock_disk_failure (test_incidents.Incidents.test_04_rejection_and_mock_disk_failure) ... FAIL
+test_05_identical_publication_after_process_restart (test_incidents.Incidents.test_05_identical_publication_after_process_restart) ... FAIL
+test_06_http_readiness_before_warmup (test_incidents.Incidents.test_06_http_readiness_before_warmup) ... FAIL
+test_07_http_loaded_version_publish_restart_and_rollback (test_incidents.Incidents.test_07_http_loaded_version_publish_restart_and_rollback) ... FAIL
+test_08_http_validation_precedes_backend_call (test_incidents.Incidents.test_08_http_validation_precedes_backend_call) ... FAIL
+
+======================================================================
+FAIL: test_01_cache_resume_and_changed_bytes_subprocess (test_incidents.Incidents.test_01_cache_resume_and_changed_bytes_subprocess)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/tests_integration/test_incidents.py", line 78, in test_01_cache_resume_and_changed_bytes_subprocess
+    self.assertIn('PREPARED',self.successful_run())
+AssertionError: 'PREPARED' not found in 'CACHE_HIT 88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4\nPUBLISHED fixture-B\n'
+
+======================================================================
+FAIL: test_02_each_preparation_setting_invalidates_subprocess (test_incidents.Incidents.test_02_each_preparation_setting_invalidates_subprocess)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/tests_integration/test_incidents.py", line 86, in test_02_each_preparation_setting_invalidates_subprocess
+    self.assertIn('PREPARED',self.successful_run(),name)
+AssertionError: 'PREPARED' not found in 'CACHE_HIT 88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4\nPUBLISHED fixture-B\n' : tokenizer_revision
+
+======================================================================
+FAIL: test_03_incomplete_foreign_nan_reports_subprocess (test_incidents.Incidents.test_03_incomplete_foreign_nan_reports_subprocess)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/tests_integration/test_incidents.py", line 93, in test_03_incomplete_foreign_nan_reports_subprocess
+    self.assertNotEqual(bad.returncode,0,bad.stdout)
+AssertionError: 0 == 0 : PREPARED 88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4
+PUBLISHED fixture-B
+
+
+======================================================================
+FAIL: test_04_rejection_and_mock_disk_failure (test_incidents.Incidents.test_04_rejection_and_mock_disk_failure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/tests_integration/test_incidents.py", line 106, in test_04_rejection_and_mock_disk_failure
+    with self.assertRaises(OSError):release.publish(m,r,self.root/'accepted.json')
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: OSError not raised
+
+======================================================================
+FAIL: test_05_identical_publication_after_process_restart (test_incidents.Incidents.test_05_identical_publication_after_process_restart)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/tests_integration/test_incidents.py", line 114, in test_05_identical_publication_after_process_restart
+    self.assertEqual(len(events),1,'Duplicate actual publication events')
+AssertionError: 2 != 1 : Duplicate actual publication events
+
+======================================================================
+FAIL: test_06_http_readiness_before_warmup (test_incidents.Incidents.test_06_http_readiness_before_warmup)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/tests_integration/test_incidents.py", line 120, in test_06_http_readiness_before_warmup
+    self.assertEqual(request(port,'/ready')[0],503)
+AssertionError: 200 != 503
+
+======================================================================
+FAIL: test_07_http_loaded_version_publish_restart_and_rollback (test_incidents.Incidents.test_07_http_loaded_version_publish_restart_and_rollback)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/tests_integration/test_incidents.py", line 132, in test_07_http_loaded_version_publish_restart_and_rollback
+    self.assertEqual(response['model_id'],'fixture-A','Pointer must not advertise unloaded B')
+AssertionError: 'fixture-B' != 'fixture-A'
+- fixture-B
+?         ^
++ fixture-A
+?         ^
+ : Pointer must not advertise unloaded B
+
+======================================================================
+FAIL: test_08_http_validation_precedes_backend_call (test_incidents.Incidents.test_08_http_validation_precedes_backend_call)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/tests_integration/test_incidents.py", line 151, in test_08_http_validation_precedes_backend_call
+    self.assertTrue(400<=code<500,(payload,code))
+AssertionError: False is not true : ({'prompt': '', 'max_new_tokens': 8}, 200)
+
+----------------------------------------------------------------------
+Ran 8 tests in 3.449s
+
+FAILED (failures=8)
+
+EXIT_CODE=1

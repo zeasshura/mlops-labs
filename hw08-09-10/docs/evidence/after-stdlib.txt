@@ -1,0 +1,16 @@
+test_01_cache_resume_and_changed_bytes_subprocess (test_incidents.Incidents.test_01_cache_resume_and_changed_bytes_subprocess) ... ok
+test_02_each_preparation_setting_invalidates_subprocess (test_incidents.Incidents.test_02_each_preparation_setting_invalidates_subprocess) ... ok
+test_03_incomplete_foreign_nan_reports_subprocess (test_incidents.Incidents.test_03_incomplete_foreign_nan_reports_subprocess) ... ok
+test_04_rejection_and_mock_disk_failure (test_incidents.Incidents.test_04_rejection_and_mock_disk_failure) ... ok
+test_05_identical_publication_after_process_restart (test_incidents.Incidents.test_05_identical_publication_after_process_restart) ... ok
+test_06_http_readiness_before_warmup (test_incidents.Incidents.test_06_http_readiness_before_warmup) ... ok
+test_07_http_loaded_version_publish_restart_and_rollback (test_incidents.Incidents.test_07_http_loaded_version_publish_restart_and_rollback) ... OBSERVED A -> pointer B / loaded A -> restart B -> rollback/restart A
+ok
+test_08_http_validation_precedes_backend_call (test_incidents.Incidents.test_08_http_validation_precedes_backend_call) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 6.515s
+
+OK
+
+EXIT_CODE=0

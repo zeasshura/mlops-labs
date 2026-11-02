@@ -1,0 +1,12 @@
+06:49:16.617 | INFO    | Flow run 'grinning-polecat' - Beginning flow run 'grinning-polecat' for flow 'validated-model-release'
+06:49:16.660 | INFO    | Flow run 'grinning-polecat' - View at http://127.0.0.1:4208/runs/flow-run/f66c8fd7-5328-4dca-86fc-2c580ea3bb13
+06:49:16.757 | INFO    | Task run 'prepare_data-299' - PREPARED fd1723f43e89320b6ab0eda0c6b5019d205555573562b64b2527fbe732edec89
+06:49:16.795 | INFO    | Task run 'prepare_data-299' - Finished in state Completed()
+06:49:16.797 | INFO    | Flow run 'grinning-polecat' - PREPARATION_DESCRIPTOR {'cache_key': 'fd1723f43e89320b6ab0eda0c6b5019d205555573562b64b2527fbe732edec89', 'artifact_uri': '/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.lab-flow-evidence/cache/fd1723f43e89320b6ab0eda0c6b5019d205555573562b64b2527fbe732edec89.json'}
+06:49:16.830 | INFO    | Task run 'obtain_artifact-c29' - Finished in state Completed()
+06:49:16.843 | INFO    | Task run 'evaluate_admission-7d2' - Finished in state Completed()
+06:49:16.881 | INFO    | Task run 'publish_release-0e8' - Finished in state Completed()
+06:49:16.882 | INFO    | Flow run 'grinning-polecat' - RELEASE {'release_id': '330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda', 'model_id': 'fixture-B', 'new_event': False}
+06:49:17.014 | INFO    | Flow run 'grinning-polecat' - Finished in state Completed()
+
+EXIT_CODE=0

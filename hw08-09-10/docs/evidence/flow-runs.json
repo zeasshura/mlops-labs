@@ -1,0 +1,92 @@
+[
+  {
+    "label": "prefect-failed",
+    "command": [
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/bin/python",
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/flow.py",
+      "--workspace",
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.lab-flow-evidence",
+      "--fail-after-prepare"
+    ],
+    "exit_code": 1,
+    "accepted_before_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+    "accepted_after_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52"
+  },
+  {
+    "label": "prefect-resumed",
+    "command": [
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/bin/python",
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/flow.py",
+      "--workspace",
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.lab-flow-evidence"
+    ],
+    "exit_code": 0,
+    "accepted_before_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+    "accepted_after_sha256": "1c6eb3286cda99b209721154c3c7f1cf2b55ef05f8b20201c19a65b16f502b4e"
+  },
+  {
+    "label": "prefect-repeated",
+    "command": [
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/bin/python",
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/flow.py",
+      "--workspace",
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.lab-flow-evidence"
+    ],
+    "exit_code": 0,
+    "accepted_before_sha256": "1c6eb3286cda99b209721154c3c7f1cf2b55ef05f8b20201c19a65b16f502b4e",
+    "accepted_after_sha256": "1c6eb3286cda99b209721154c3c7f1cf2b55ef05f8b20201c19a65b16f502b4e"
+  },
+  {
+    "label": "prefect-input-changed",
+    "command": [
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/bin/python",
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/flow.py",
+      "--workspace",
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.lab-flow-evidence"
+    ],
+    "exit_code": 0,
+    "accepted_before_sha256": "1c6eb3286cda99b209721154c3c7f1cf2b55ef05f8b20201c19a65b16f502b4e",
+    "accepted_after_sha256": "1c6eb3286cda99b209721154c3c7f1cf2b55ef05f8b20201c19a65b16f502b4e"
+  },
+  {
+    "label": "prefect-pointer-crash",
+    "command": [
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/bin/python",
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/flow.py",
+      "--workspace",
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.lab-flow-crash",
+      "--fail-after-pointer"
+    ],
+    "exit_code": 1,
+    "accepted_before_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+    "accepted_after_sha256": "1c6eb3286cda99b209721154c3c7f1cf2b55ef05f8b20201c19a65b16f502b4e"
+  },
+  {
+    "label": "prefect-pointer-recovered",
+    "command": [
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/bin/python",
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/flow.py",
+      "--workspace",
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.lab-flow-crash"
+    ],
+    "exit_code": 0,
+    "accepted_before_sha256": "1c6eb3286cda99b209721154c3c7f1cf2b55ef05f8b20201c19a65b16f502b4e",
+    "accepted_after_sha256": "1c6eb3286cda99b209721154c3c7f1cf2b55ef05f8b20201c19a65b16f502b4e"
+  },
+  {
+    "label": "prefect-pointer-repeated",
+    "command": [
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/bin/python",
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/flow.py",
+      "--workspace",
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.lab-flow-crash"
+    ],
+    "exit_code": 0,
+    "accepted_before_sha256": "1c6eb3286cda99b209721154c3c7f1cf2b55ef05f8b20201c19a65b16f502b4e",
+    "accepted_after_sha256": "1c6eb3286cda99b209721154c3c7f1cf2b55ef05f8b20201c19a65b16f502b4e"
+  },
+  {
+    "pointer_crash_events": 1,
+    "pointer_crash_recovered": true
+  }
+]

@@ -8,3 +8,12 @@ models/
 *.bin
 *.pt
 .lab*/
+.prefect/
+.runtime/
+artifacts/
+mlruns/
+mlartifacts/
+*.safetensors.index.json
+*.log
+.env.*
+!.env.example

@@ -1,0 +1,30 @@
+[
+  {
+    "label": "real-prefect-baseline",
+    "command": [
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/bin/python",
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/flow.py",
+      "--workspace",
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.runtime/real",
+      "--role",
+      "baseline"
+    ],
+    "exit_code": 0,
+    "accepted_before_sha256": null,
+    "accepted_after_sha256": "d0a0d99504bddda2b67ff1b8c4d0e03d395f48ac81d0fe885a8fc9786163d3ea"
+  },
+  {
+    "label": "real-prefect-candidate-reject",
+    "command": [
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/bin/python",
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/flow.py",
+      "--workspace",
+      "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.runtime/real",
+      "--role",
+      "candidate"
+    ],
+    "exit_code": 1,
+    "accepted_before_sha256": "d0a0d99504bddda2b67ff1b8c4d0e03d395f48ac81d0fe885a8fc9786163d3ea",
+    "accepted_after_sha256": "d0a0d99504bddda2b67ff1b8c4d0e03d395f48ac81d0fe885a8fc9786163d3ea"
+  }
+]

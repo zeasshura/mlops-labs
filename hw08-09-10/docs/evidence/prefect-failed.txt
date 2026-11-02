@@ -1,0 +1,52 @@
+06:48:52.117 | INFO    | Flow run 'belligerent-quetzal' - Beginning flow run 'belligerent-quetzal' for flow 'validated-model-release'
+06:48:52.160 | INFO    | Flow run 'belligerent-quetzal' - View at http://127.0.0.1:4208/runs/flow-run/165830e5-92e1-4db4-9836-c55bb97e93f9
+06:48:52.290 | INFO    | Task run 'prepare_data-335' - PREPARED 804e3b5543853c78aad1eb58af67e9dbd4753e8a7b365007f4150f8d1bee5157
+06:48:52.349 | INFO    | Task run 'prepare_data-335' - Finished in state Completed()
+06:48:52.363 | INFO    | Flow run 'belligerent-quetzal' - PREPARATION_DESCRIPTOR {'cache_key': '804e3b5543853c78aad1eb58af67e9dbd4753e8a7b365007f4150f8d1bee5157', 'artifact_uri': '/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.lab-flow-evidence/cache/804e3b5543853c78aad1eb58af67e9dbd4753e8a7b365007f4150f8d1bee5157.json'}
+06:48:52.365 | ERROR   | Flow run 'belligerent-quetzal' - Encountered exception during execution: RuntimeError('Injected failure after preparation')
+Traceback (most recent call last):
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 797, in run_context
+    yield self
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 1425, in run_flow_sync
+    engine.call_flow_fn()
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 817, in call_flow_fn
+    result = call_with_parameters(self.flow.fn, self.parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/utilities/callables.py", line 210, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/flow.py", line 85, in release_flow
+    if fail_after_prepare:raise RuntimeError('Injected failure after preparation')
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Injected failure after preparation
+06:48:52.623 | INFO    | Flow run 'belligerent-quetzal' - Finished in state Failed('Flow run encountered an exception: RuntimeError: Injected failure after preparation')
+Traceback (most recent call last):
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/flow.py", line 97, in <module>
+    release_flow(str(args.workspace),args.role,args.fail_after_prepare,args.fail_after_pointer)
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flows.py", line 1713, in __call__
+    return run_flow(
+           ^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 1582, in run_flow
+    ret_val = run_flow_sync(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 1427, in run_flow_sync
+    return engine.state if return_type == "state" else engine.result()
+                                                       ^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 363, in result
+    raise self._raised
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 797, in run_context
+    yield self
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 1425, in run_flow_sync
+    engine.call_flow_fn()
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 817, in call_flow_fn
+    result = call_with_parameters(self.flow.fn, self.parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/utilities/callables.py", line 210, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/flow.py", line 85, in release_flow
+    if fail_after_prepare:raise RuntimeError('Injected failure after preparation')
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Injected failure after preparation
+
+EXIT_CODE=1

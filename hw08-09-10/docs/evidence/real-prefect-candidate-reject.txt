@@ -1,0 +1,120 @@
+06:55:41.651 | INFO    | Flow run 'crafty-gecko' - Beginning flow run 'crafty-gecko' for flow 'validated-model-release'
+06:55:41.660 | INFO    | Flow run 'crafty-gecko' - View at http://127.0.0.1:4208/runs/flow-run/45f58e02-3d83-41f6-ab29-73855982a7ba
+06:55:41.733 | INFO    | Task run 'prepare_data-096' - Finished in state Cached(type=COMPLETED)
+06:55:41.734 | INFO    | Flow run 'crafty-gecko' - PREPARATION_DESCRIPTOR {'cache_key': 'e554dc5d64bf402d76ab3526611352173cc7004ab1aa97a6f58932f7ad42d730', 'artifact_uri': '/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.runtime/real/cache/e554dc5d64bf402d76ab3526611352173cc7004ab1aa97a6f58932f7ad42d730.json'}
+06:55:41.838 | INFO    | Task run 'obtain_artifact-58d' - Finished in state Completed()
+06:55:42.488 | ERROR   | Task run 'evaluate_admission-076' - Task run failed with exception: ValueError('Incomplete or rejected evaluation')
+Traceback (most recent call last):
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 990, in run_context
+    yield self
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 1644, in run_task_sync
+    engine.call_task_fn(txn)
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 1007, in call_task_fn
+    result = call_with_parameters(self.task.fn, parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/utilities/callables.py", line 210, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/flow.py", line 69, in evaluate_admission
+    validate_release(manifest,report)
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/release.py", line 54, in validate_release
+    raise ValueError('Incomplete or rejected evaluation')
+ValueError: Incomplete or rejected evaluation
+06:55:42.496 | ERROR   | Task run 'evaluate_admission-076' - Finished in state Failed('Task run encountered an exception ValueError: Incomplete or rejected evaluation')
+06:55:42.497 | ERROR   | Flow run 'crafty-gecko' - Encountered exception during execution: ValueError('Incomplete or rejected evaluation')
+Traceback (most recent call last):
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 797, in run_context
+    yield self
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 1425, in run_flow_sync
+    engine.call_flow_fn()
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 817, in call_flow_fn
+    result = call_with_parameters(self.flow.fn, self.parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/utilities/callables.py", line 210, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/flow.py", line 87, in release_flow
+    admission=evaluate_admission(root,role,artifact)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/tasks.py", line 1200, in __call__
+    return run_task(
+           ^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 1871, in run_task
+    return run_task_sync(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 1646, in run_task_sync
+    return engine.state if return_type == "state" else engine.result()
+                                                       ^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 610, in result
+    raise self._raised
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 990, in run_context
+    yield self
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 1644, in run_task_sync
+    engine.call_task_fn(txn)
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 1007, in call_task_fn
+    result = call_with_parameters(self.task.fn, parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/utilities/callables.py", line 210, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/flow.py", line 69, in evaluate_admission
+    validate_release(manifest,report)
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/release.py", line 54, in validate_release
+    raise ValueError('Incomplete or rejected evaluation')
+ValueError: Incomplete or rejected evaluation
+06:55:42.527 | INFO    | Flow run 'crafty-gecko' - Finished in state Failed('Flow run encountered an exception: ValueError: Incomplete or rejected evaluation')
+Traceback (most recent call last):
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/flow.py", line 97, in <module>
+    release_flow(str(args.workspace),args.role,args.fail_after_prepare,args.fail_after_pointer)
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flows.py", line 1713, in __call__
+    return run_flow(
+           ^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 1582, in run_flow
+    ret_val = run_flow_sync(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 1427, in run_flow_sync
+    return engine.state if return_type == "state" else engine.result()
+                                                       ^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 363, in result
+    raise self._raised
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 797, in run_context
+    yield self
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 1425, in run_flow_sync
+    engine.call_flow_fn()
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 817, in call_flow_fn
+    result = call_with_parameters(self.flow.fn, self.parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/utilities/callables.py", line 210, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/flow.py", line 87, in release_flow
+    admission=evaluate_admission(root,role,artifact)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/tasks.py", line 1200, in __call__
+    return run_task(
+           ^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 1871, in run_task
+    return run_task_sync(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 1646, in run_task_sync
+    return engine.state if return_type == "state" else engine.result()
+                                                       ^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 610, in result
+    raise self._raised
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 990, in run_context
+    yield self
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 1644, in run_task_sync
+    engine.call_task_fn(txn)
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 1007, in call_task_fn
+    result = call_with_parameters(self.task.fn, parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/utilities/callables.py", line 210, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/flow.py", line 69, in evaluate_admission
+    validate_release(manifest,report)
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/release.py", line 54, in validate_release
+    raise ValueError('Incomplete or rejected evaluation')
+ValueError: Incomplete or rejected evaluation
+
+EXIT_CODE=1

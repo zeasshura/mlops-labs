@@ -1,0 +1,125 @@
+06:49:24.488 | INFO    | Flow run 'attractive-coucal' - Beginning flow run 'attractive-coucal' for flow 'validated-model-release'
+06:49:24.515 | INFO    | Flow run 'attractive-coucal' - View at http://127.0.0.1:4208/runs/flow-run/c4cc70a7-a1ef-4a97-a275-12f736383aa8
+06:49:24.648 | INFO    | Task run 'prepare_data-740' - PREPARED 804e3b5543853c78aad1eb58af67e9dbd4753e8a7b365007f4150f8d1bee5157
+06:49:24.710 | INFO    | Task run 'prepare_data-740' - Finished in state Completed()
+06:49:24.714 | INFO    | Flow run 'attractive-coucal' - PREPARATION_DESCRIPTOR {'cache_key': '804e3b5543853c78aad1eb58af67e9dbd4753e8a7b365007f4150f8d1bee5157', 'artifact_uri': '/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.lab-flow-crash/cache/804e3b5543853c78aad1eb58af67e9dbd4753e8a7b365007f4150f8d1bee5157.json'}
+06:49:24.749 | INFO    | Task run 'obtain_artifact-8a9' - Finished in state Completed()
+06:49:24.776 | INFO    | Task run 'evaluate_admission-440' - Finished in state Completed()
+06:49:24.866 | ERROR   | Task run 'publish_release-e64' - Task run failed with exception: RuntimeError('Injected crash after pointer, before publication ledger')
+Traceback (most recent call last):
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 990, in run_context
+    yield self
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 1644, in run_task_sync
+    engine.call_task_fn(txn)
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 1007, in call_task_fn
+    result = call_with_parameters(self.task.fn, parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/utilities/callables.py", line 210, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/flow.py", line 75, in publish_release
+    return publish_event(read(admission['manifest_path']),read(admission['report_path']),root,fail_after_pointer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/release.py", line 153, in publish_event
+    raise RuntimeError('Injected crash after pointer, before publication ledger')
+RuntimeError: Injected crash after pointer, before publication ledger
+06:49:24.924 | ERROR   | Task run 'publish_release-e64' - Finished in state Failed('Task run encountered an exception RuntimeError: Injected crash after pointer, before publication ledger')
+06:49:24.935 | ERROR   | Flow run 'attractive-coucal' - Encountered exception during execution: RuntimeError('Injected crash after pointer, before publication ledger')
+Traceback (most recent call last):
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 797, in run_context
+    yield self
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 1425, in run_flow_sync
+    engine.call_flow_fn()
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 817, in call_flow_fn
+    result = call_with_parameters(self.flow.fn, self.parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/utilities/callables.py", line 210, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/flow.py", line 88, in release_flow
+    result=publish_release(root,admission,fail_after_pointer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/tasks.py", line 1200, in __call__
+    return run_task(
+           ^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 1871, in run_task
+    return run_task_sync(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 1646, in run_task_sync
+    return engine.state if return_type == "state" else engine.result()
+                                                       ^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 610, in result
+    raise self._raised
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 990, in run_context
+    yield self
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 1644, in run_task_sync
+    engine.call_task_fn(txn)
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 1007, in call_task_fn
+    result = call_with_parameters(self.task.fn, parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/utilities/callables.py", line 210, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/flow.py", line 75, in publish_release
+    return publish_event(read(admission['manifest_path']),read(admission['report_path']),root,fail_after_pointer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/release.py", line 153, in publish_event
+    raise RuntimeError('Injected crash after pointer, before publication ledger')
+RuntimeError: Injected crash after pointer, before publication ledger
+06:49:25.101 | INFO    | Flow run 'attractive-coucal' - Finished in state Failed('Flow run encountered an exception: RuntimeError: Injected crash after pointer, before publication ledger')
+Traceback (most recent call last):
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/flow.py", line 97, in <module>
+    release_flow(str(args.workspace),args.role,args.fail_after_prepare,args.fail_after_pointer)
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flows.py", line 1713, in __call__
+    return run_flow(
+           ^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 1582, in run_flow
+    ret_val = run_flow_sync(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 1427, in run_flow_sync
+    return engine.state if return_type == "state" else engine.result()
+                                                       ^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 363, in result
+    raise self._raised
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 797, in run_context
+    yield self
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 1425, in run_flow_sync
+    engine.call_flow_fn()
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/flow_engine.py", line 817, in call_flow_fn
+    result = call_with_parameters(self.flow.fn, self.parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/utilities/callables.py", line 210, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/flow.py", line 88, in release_flow
+    result=publish_release(root,admission,fail_after_pointer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/tasks.py", line 1200, in __call__
+    return run_task(
+           ^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 1871, in run_task
+    return run_task_sync(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 1646, in run_task_sync
+    return engine.state if return_type == "state" else engine.result()
+                                                       ^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 610, in result
+    raise self._raised
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 990, in run_context
+    yield self
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 1644, in run_task_sync
+    engine.call_task_fn(txn)
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/task_engine.py", line 1007, in call_task_fn
+    result = call_with_parameters(self.task.fn, parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.venv/lib64/python3.12/site-packages/prefect/utilities/callables.py", line 210, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/flow.py", line 75, in publish_release
+    return publish_event(read(admission['manifest_path']),read(admission['report_path']),root,fail_after_pointer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/release.py", line 153, in publish_event
+    raise RuntimeError('Injected crash after pointer, before publication ledger')
+RuntimeError: Injected crash after pointer, before publication ledger
+
+EXIT_CODE=1

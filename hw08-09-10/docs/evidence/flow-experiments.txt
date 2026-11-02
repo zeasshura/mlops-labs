@@ -1,0 +1,9 @@
+Создан синтетический стенд: /home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.lab-flow-evidence
+prefect-failed 1
+prefect-resumed 0
+prefect-repeated 0
+prefect-input-changed 0
+Создан синтетический стенд: /home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.lab-flow-crash
+prefect-pointer-crash 1
+prefect-pointer-recovered 0
+prefect-pointer-repeated 0

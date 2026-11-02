@@ -1,0 +1,530 @@
+diff --git a/hw08-09-10/backend.py b/hw08-09-10/backend.py
+new file mode 100644
+index 0000000..8364487
+--- /dev/null
++++ b/hw08-09-10/backend.py
+@@ -0,0 +1,77 @@
++"""Injectable backends. Importing the stub never imports model libraries."""
++import time
++from pathlib import Path
++from release import digest, canonical, verify_artifact
++
++
++class StubBackend:
++    def __init__(self, manifest, root):
++        verify_artifact(manifest, root)
++        self.loaded_id = manifest['model_id']
++        self.runtime_sha256 = manifest['runtime_sha256']
++        self.calls = 0
++        self.limit = manifest['runtime']['generation']['max_new_tokens']
++        self.fixed_limit = False
++
++    def warmup(self):
++        pass
++
++    def generate(self, prompt, limit):
++        self.calls += 1
++        time.sleep(.01)
++        return {'answer': f'STUB ONLY: {self.loaded_id}', 'output_tokens': 1, 'input_tokens': len(prompt.split())}
++
++
++class TransformersBackend:
++    def __init__(self, manifest, root):
++        import torch
++        from transformers import AutoModelForCausalLM, AutoTokenizer
++        if manifest.get('synthetic') or manifest['runtime']['base_revision'] == 'fixture-only':
++            raise ValueError('A synthetic release cannot load a real backend')
++        artifact = verify_artifact(manifest, root)
++        runtime = manifest['runtime']
++        if len(runtime['base_revision']) != 40:
++            raise ValueError('Base revision must be pinned')
++        torch.set_num_threads(4)
++        self.torch = torch
++        self.tokenizer = AutoTokenizer.from_pretrained(artifact, local_files_only=True)
++        tokenizer_files = {name: manifest['file_hashes'][name] for name in manifest['tokenizer_files']}
++        if digest(canonical(tokenizer_files)) != runtime['tokenizer_sha256']:
++            raise ValueError('Tokenizer identity mismatch')
++        if digest(self.tokenizer.chat_template.encode()) != runtime['template_sha256']:
++            raise ValueError('Chat template identity mismatch')
++        base_path = artifact if manifest['model_kind'] == 'base' else Path(manifest['base_artifact_uri'])
++        self.model = AutoModelForCausalLM.from_pretrained(base_path, local_files_only=True,
++                                                        dtype=getattr(torch, runtime['dtype'])).to('cpu').eval()
++        if manifest['model_kind'] == 'adapter':
++            from peft import PeftModel
++            self.model = PeftModel.from_pretrained(self.model, artifact).eval()
++        self.runtime = runtime
++        self.loaded_id = manifest['model_id']
++        self.runtime_sha256 = manifest['runtime_sha256']
++        self.limit = runtime['generation']['max_new_tokens']
++        self.fixed_limit = True
++        self.calls = 0
++
++    def warmup(self):
++        self.generate('Say hello.', self.limit)
++
++    def generate(self, prompt, limit):
++        g = self.runtime['generation']
++        text = self.tokenizer.apply_chat_template(
++            [{'role': 'system', 'content': g['system']}, {'role': 'user', 'content': prompt}],
++            tokenize=False, add_generation_prompt=True, enable_thinking=g['enable_thinking'])
++        batch = self.tokenizer(text, return_tensors='pt')
++        if batch['input_ids'].shape[1] > 2048:
++            raise ValueError('Input exceeds 2048 tokens including system/template')
++        if limit != self.limit:
++            raise ValueError('Generation limit differs from the evaluated protocol')
++        self.calls += 1
++        if g['do_sample']:
++            self.torch.manual_seed(g['seed'])
++        with self.torch.inference_mode():
++            output = self.model.generate(**batch, max_new_tokens=limit, do_sample=g['do_sample'],
++                pad_token_id=self.tokenizer.pad_token_id or self.tokenizer.eos_token_id)
++        tokens = output[0, batch['input_ids'].shape[1]:]
++        return {'answer': self.tokenizer.decode(tokens, skip_special_tokens=True),
++                'output_tokens': len(tokens), 'input_tokens': batch['input_ids'].shape[1]}
+diff --git a/hw08-09-10/lab.py b/hw08-09-10/lab.py
+index 135024c..10b5735 100644
+--- a/hw08-09-10/lab.py
++++ b/hw08-09-10/lab.py
+@@ -23,7 +23,7 @@ def read(path):
+ 
+ 
+ def write(path,value):
+-    Path(path).write_text(json.dumps(value,ensure_ascii=False,indent=2))
++    release.atomic_bytes(path, release.canonical(value)+b'\n')
+ 
+ 
+ def initialize(root):
+@@ -62,23 +62,26 @@ def prepare(root):
+     write(entry,result);print('PREPARED',result['input_sha256']);return result
+ 
+ 
+-def run(root,report_name,fail_after_prepare=False):
+-    prepared=prepare(root)
++def run(root,report_name,fail_after_prepare=False,manifest_name='manifest-B.json',fail_after_pointer=False):
++    import uuid
++    with (root/'attempts.jsonl').open('a') as stream:
++        stream.write(json.dumps({'attempt_id':str(uuid.uuid4()),'report':report_name})+'\n')
++    release.recover_publication(root)
++    prepare(root)
+     if fail_after_prepare:raise RuntimeError('Инъекция сбоя после подготовки')
+-    manifest=read(root/'manifest-B.json');report=read(root/report_name)
+-    release.publish(manifest,report,root/'accepted.json')
+-    with (root/'publications.jsonl').open('a') as f:
+-        f.write(json.dumps({'model_id':manifest['model_id'],'prepared':prepared['input_sha256']})+'\n')
+-    print('PUBLISHED',manifest['model_id'])
++    manifest=read(root/manifest_name);report=read(root/report_name)
++    result=release.publish_event(manifest,report,root,fail_after_pointer)
++    print('PUBLISHED' if result['new_event'] else 'ALREADY_PUBLISHED',manifest['model_id'])
+ 
+ 
+ def main():
+     parser=argparse.ArgumentParser();parser.add_argument('--workspace',type=Path,default=Path('.lab'))
+     sub=parser.add_subparsers(dest='command',required=True);sub.add_parser('init')
+     run_parser=sub.add_parser('run');run_parser.add_argument('--report',default='report-B.json');run_parser.add_argument('--fail-after-prepare',action='store_true')
++    run_parser.add_argument('--manifest',default='manifest-B.json');run_parser.add_argument('--fail-after-pointer',action='store_true')
+     args=parser.parse_args()
+     if args.command=='init':initialize(args.workspace)
+-    else:run(args.workspace,args.report,args.fail_after_prepare)
++    else:run(args.workspace,args.report,args.fail_after_prepare,args.manifest,args.fail_after_pointer)
+ 
+ 
+ if __name__=='__main__':main()
+diff --git a/hw08-09-10/release.py b/hw08-09-10/release.py
+index 45e8fee..a03a470 100644
+--- a/hw08-09-10/release.py
++++ b/hw08-09-10/release.py
+@@ -1,19 +1,156 @@
+-"""Учебный прототип выпуска. Реализация содержит дефекты; см. CONTRACTS.txt."""
++"""Release contracts and atomic, recoverable single-writer publication."""
+ import hashlib
+ import json
++import math
++import os
+ from pathlib import Path
++import re
++import tempfile
++
++
++def canonical(value):
++    return json.dumps(value, sort_keys=True, separators=(',', ':'),
++                      ensure_ascii=False, allow_nan=False).encode('utf-8')
++
++
++def digest(data):
++    return hashlib.sha256(data).hexdigest()
++
++
++def file_digest(path):
++    h = hashlib.sha256()
++    with Path(path).open('rb') as stream:
++        for chunk in iter(lambda: stream.read(8*1024*1024), b''):
++            h.update(chunk)
++    return h.hexdigest()
+ 
+ 
+ def cache_key(data_path: Path, config: dict) -> str:
+-    return hashlib.sha256(str(data_path).encode()).hexdigest()
++    return digest(canonical({'data_sha256': digest(Path(data_path).read_bytes()), 'config': config}))
+ 
+ 
+ def validate_release(manifest: dict, report: dict) -> None:
+-    if not report.get('passed'):
+-        raise ValueError('Кандидат отклонён')
++    if not isinstance(manifest, dict) or not isinstance(report, dict):
++        raise ValueError('manifest and report must be objects')
++    if type(manifest.get('schema_version')) is not int or manifest['schema_version'] != 1:
++        raise ValueError('schema_version must be integer 1')
++    for field in ('model_id', 'artifact_uri'):
++        if not isinstance(manifest.get(field), str) or not manifest[field].strip():
++            raise ValueError('Missing ' + field)
++    hashes = ('model_sha256', 'protocol_sha256', 'golden_sha256', 'runtime_sha256')
++    for field in hashes:
++        if not isinstance(manifest.get(field), str) or not re.fullmatch('[0-9a-f]{64}', manifest[field]):
++            raise ValueError('Invalid ' + field)
++    runtime = manifest.get('runtime')
++    if not isinstance(runtime, dict) or not runtime:
++        raise ValueError('Missing runtime')
++    try:
++        actual = digest(canonical(runtime))
++    except (TypeError, ValueError) as exc:
++        raise ValueError('Invalid runtime') from exc
++    if actual != manifest['runtime_sha256']:
++        raise ValueError('Runtime changed since evaluation')
++    if report.get('status') != 'complete' or report.get('passed') is not True:
++        raise ValueError('Incomplete or rejected evaluation')
++    if not isinstance(report.get('evaluation_run_id'), str) or not report['evaluation_run_id'].strip():
++        raise ValueError('Missing evaluation_run_id')
++    for field in ('model_id', *hashes):
++        if report.get(field) != manifest[field]:
++            raise ValueError('Report mismatch: ' + field)
++    metrics = report.get('metrics')
++    if not isinstance(metrics, dict):
++        raise ValueError('Missing metrics')
++    for field in ('accuracy', 'format_rate'):
++        value = metrics.get(field)
++        if type(value) not in (int, float) or not 0 <= value <= 1 or not math.isfinite(value):
++            raise ValueError('Invalid metric: ' + field)
++
++
++def atomic_bytes(target, data):
++    target = Path(target)
++    target.parent.mkdir(parents=True, exist_ok=True)
++    temporary = None
++    try:
++        with tempfile.NamedTemporaryFile(dir=target.parent, prefix='.'+target.name+'.',
++                                         suffix='.tmp', delete=False) as stream:
++            temporary = Path(stream.name)
++            stream.write(data)
++            stream.flush()
++            os.fsync(stream.fileno())
++        os.replace(temporary, target)
++        directory = os.open(target.parent, os.O_RDONLY | os.O_DIRECTORY)
++        try:
++            os.fsync(directory)
++        finally:
++            os.close(directory)
++    finally:
++        if temporary is not None:
++            temporary.unlink(missing_ok=True)
+ 
+ 
+ def publish(manifest: dict, report: dict, target: Path) -> None:
+     validate_release(manifest, report)
+-    target.parent.mkdir(parents=True, exist_ok=True)
+-    target.write_text(json.dumps(manifest, ensure_ascii=False, indent=2))
++    payload = canonical(manifest) + b'\n'
++    if Path(target).exists() and Path(target).read_bytes() == payload:
++        return
++    atomic_bytes(target, payload)
++
++
++def verify_artifact(manifest, root):
++    files = manifest.get('file_hashes')
++    if not isinstance(files, dict) or not files or digest(canonical(files)) != manifest['model_sha256']:
++        raise ValueError('Invalid artifact file list')
++    artifact = Path(manifest['artifact_uri'].removeprefix('file://'))
++    if not artifact.is_absolute():
++        artifact = Path(root) / artifact
++    for name, expected in files.items():
++        relative = Path(name)
++        if relative.is_absolute() or '..' in relative.parts:
++            raise ValueError('Artifact path traversal')
++        path = artifact / relative if artifact.is_dir() else artifact
++        if not artifact.is_dir() and name != artifact.name:
++            raise ValueError('Unexpected artifact name')
++        if not path.is_file() or file_digest(path) != expected:
++            raise ValueError('Artifact bytes mismatch: ' + name)
++    return artifact
++
++
++def recover_publication(root):
++    """An intent repairs a crash after pointer replacement, before ledger replacement."""
++    root = Path(root)
++    pending = root / 'pending-release.json'
++    ledger = root / 'publications.jsonl'
++    events = [json.loads(line) for line in ledger.read_text().splitlines()] if ledger.exists() else []
++    if pending.exists():
++        intent = json.loads(pending.read_text())
++        pointer = root / 'accepted.json'
++        if pointer.exists() and digest(pointer.read_bytes()) == intent['pointer_sha256']:
++            if not any(event['release_id'] == intent['event']['release_id'] for event in events):
++                events.append(intent['event'])
++                atomic_bytes(ledger, b''.join(canonical(event)+b'\n' for event in events))
++        pending.unlink()
++    return events
++
++
++def publish_event(manifest, report, root, fail_after_pointer=False):
++    root = Path(root)
++    events = recover_publication(root)
++    validate_release(manifest, report)
++    verify_artifact(manifest, root)
++    release_id = digest(canonical({'manifest': manifest, 'report': report}))
++    accepted = {**manifest, 'release_id': release_id, 'evaluation_run_id': report['evaluation_run_id']}
++    event = {'release_id': release_id, 'model_id': manifest['model_id'],
++             'runtime_sha256': manifest['runtime_sha256'], 'evaluation_run_id': report['evaluation_run_id']}
++    payload = canonical(accepted) + b'\n'
++    intent = {'event': event, 'pointer_sha256': digest(payload)}
++    atomic_bytes(root/'pending-release.json', canonical(intent)+b'\n')
++    try:
++        publish(accepted, report, root/'accepted.json')
++    except Exception:
++        (root/'pending-release.json').unlink(missing_ok=True)
++        raise
++    if fail_after_pointer:
++        raise RuntimeError('Injected crash after pointer, before publication ledger')
++    already = any(e['release_id'] == release_id for e in events)
++    recover_publication(root)
++    return {'release_id': release_id, 'model_id': manifest['model_id'], 'new_event': not already}
+diff --git a/hw08-09-10/service.py b/hw08-09-10/service.py
+index 9ab3c3c..6d7a3c8 100644
+--- a/hw08-09-10/service.py
++++ b/hw08-09-10/service.py
+@@ -1,80 +1,170 @@
+-"""Лёгкий HTTP-прототип с дефектами. Только localhost, STUB ONLY.
+-
+-Для итогового проекта перенесите исправленный контракт в FastAPI и подключите
+-загрузчик ДЗ 6+7. Прототип нужен для опытов без установки зависимостей и весов.
+-"""
++"""Shared serving state, a stdlib test adapter, and the final FastAPI application."""
+ import argparse
++from contextlib import asynccontextmanager
+ import json
++import os
++from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
++from pathlib import Path
+ import threading
+ import time
+ import uuid
+-from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+-from pathlib import Path
++from backend import StubBackend, TransformersBackend
++from release import canonical, digest
++
+ 
++class Unavailable(Exception):
++    pass
+ 
+-class StubBackend:
+-    def __init__(self,manifest):
+-        self.loaded_id=manifest['model_id'];self.calls=0;self.runtime_sha256=manifest['runtime_sha256']
+ 
+-    def generate(self,prompt,limit):
+-        self.calls+=1;time.sleep(.01)
+-        return {'answer':f'STUB ONLY: {self.loaded_id}', 'output_tokens':1}
++class Busy(Exception):
++    pass
+ 
+ 
+ class ServiceState:
+-    def __init__(self,root,warmup_seconds):
+-        self.root=root;self.ready=True
+-        manifest=json.loads((root/'accepted.json').read_text())
+-        self.backend=StubBackend(manifest)
+-        self.warmup_finished=threading.Event()
+-        def warmup():
+-            time.sleep(warmup_seconds);self.warmup_finished.set()
+-        threading.Thread(target=warmup,daemon=True).start()
+-
+-    def generate(self,request):
+-        started=time.perf_counter()
+-        result=self.backend.generate(request.get('prompt',''),request.get('max_new_tokens',32))
+-        advertised=json.loads((self.root/'accepted.json').read_text())
+-        result.update(model_id=advertised['model_id'],runtime_sha256=advertised['runtime_sha256'],
+-                      request_id=str(uuid.uuid4()),generation_seconds=time.perf_counter()-started)
+-        return result
+-
+-
+-def handler_for(state):
++    def __init__(self, root, warmup_seconds=0, backend_factory=StubBackend):
++        self.root = Path(root)
++        self.ready = False
++        self.backend = None
++        self.error = None
++        self.warmup_finished = threading.Event()
++        self.lock = threading.Lock()
++        self.capacity = threading.BoundedSemaphore(4)
++        def load():
++            try:
++                manifest = json.loads((self.root/'accepted.json').read_text())
++                if digest(canonical(manifest['runtime'])) != manifest['runtime_sha256']:
++                    raise ValueError('Runtime fingerprint mismatch')
++                self.backend = backend_factory(manifest, self.root)
++                self.backend.warmup()
++                time.sleep(warmup_seconds)
++                self.warmup_finished.set()
++                self.ready = True
++            except Exception as exc:
++                self.error = f'{type(exc).__name__}: {exc}'
++        self.loader = threading.Thread(target=load, daemon=True)
++        self.loader.start()
++
++    def debug(self):
++        return {'loaded_id': self.backend.loaded_id if self.backend else None,
++                'calls': self.backend.calls if self.backend else 0,
++                'warmup_finished': self.warmup_finished.is_set(), 'error': self.error}
++
++    def generate(self, request):
++        started = time.perf_counter()
++        if not isinstance(request, dict):
++            raise ValueError('Expected JSON object')
++        prompt, limit = request.get('prompt'), request.get('max_new_tokens', self.backend.limit if self.backend else 32)
++        if not isinstance(prompt, str) or not prompt.strip() or len(prompt) > 16384:
++            raise ValueError('prompt must contain 1..16384 characters')
++        if type(limit) is not int or not 1 <= limit <= 32:
++            raise ValueError('max_new_tokens must be integer 1..32')
++        if not self.ready:
++            raise Unavailable('Loading or warming up')
++        if limit > self.backend.limit or self.backend.fixed_limit and limit != self.backend.limit:
++            raise ValueError('Limit differs from evaluated protocol')
++        if not self.capacity.acquire(blocking=False):
++            raise Busy('Queue capacity reached')
++        try:
++            with self.lock:
++                generation_start = time.perf_counter()
++                result = self.backend.generate(prompt, limit)
++                elapsed = time.perf_counter()-generation_start
++                result.update(model_id=self.backend.loaded_id, runtime_sha256=self.backend.runtime_sha256,
++                              request_id=str(uuid.uuid4()), generation_seconds=elapsed,
++                              queue_seconds=generation_start-started, total_seconds=time.perf_counter()-started)
++                return result
++        finally:
++            self.capacity.release()
++
++
++def handler_for(state, debug=True):
+     class Handler(BaseHTTPRequestHandler):
+-        def send_json(self,status,payload):
+-            data=json.dumps(payload,ensure_ascii=False).encode()
+-            self.send_response(status);self.send_header('Content-Type','application/json; charset=utf-8')
+-            self.send_header('Content-Length',str(len(data)));self.end_headers();self.wfile.write(data)
++        def log_message(self, *args):
++            pass
++
++        def send_json(self, status, payload):
++            data=json.dumps(payload, ensure_ascii=False).encode()
++            self.send_response(status)
++            self.send_header('Content-Type', 'application/json; charset=utf-8')
++            self.send_header('Content-Length', str(len(data)))
++            self.end_headers()
++            self.wfile.write(data)
+ 
+         def do_GET(self):
+-            if self.path=='/health':self.send_json(200,{'alive':True,'backend':'STUB ONLY'})
+-            elif self.path=='/ready':self.send_json(200 if state.ready else 503,{'ready':state.ready})
+-            elif self.path=='/debug':
+-                self.send_json(200,{'loaded_id':state.backend.loaded_id,'calls':state.backend.calls,'warmup_finished':state.warmup_finished.is_set()})
+-            else:self.send_json(404,{'error':'not found'})
++            if self.path == '/health': self.send_json(200, {'alive': True})
++            elif self.path == '/ready': self.send_json(200 if state.ready else 503, {'ready':state.ready})
++            elif self.path == '/debug' and debug: self.send_json(200, state.debug())
++            else: self.send_json(404, {'error':'not found'})
+ 
+         def do_POST(self):
+-            if self.path!='/generate':self.send_json(404,{'error':'not found'});return
+-            size=int(self.headers.get('Content-Length','0'))
+-            if size<0 or size>65536:self.send_json(413,{'error':'body too large'});return
++            if self.path != '/generate': self.send_json(404, {'error':'not found'}); return
+             try:
+-                payload=json.loads(self.rfile.read(size))
+-                self.send_json(200,state.generate(payload))
+-            except (ValueError,TypeError,AttributeError,KeyError) as e:
+-                self.send_json(400,{'error':str(e)})
++                size = int(self.headers.get('Content-Length','0'))
++                if not 0 < size <= 65536:
++                    self.send_json(413, {'error':'body too large or missing'}); return
++                result=state.generate(json.loads(self.rfile.read(size)))
++                self.send_json(200,result)
++            except Unavailable as exc: self.send_json(503, {'error':str(exc)})
++            except Busy as exc: self.send_json(429, {'error':str(exc)})
++            except (ValueError, TypeError) as exc: self.send_json(400, {'error':str(exc)})
+     return Handler
+ 
+ 
++def create_app(root, warmup_seconds=0, backend_factory=StubBackend, debug=False):
++    from fastapi import FastAPI, Request
++    from fastapi.responses import JSONResponse
++    from starlette.concurrency import run_in_threadpool
++    @asynccontextmanager
++    async def lifespan(app):
++        app.state.service = ServiceState(root, warmup_seconds, backend_factory)
++        yield
++    app=FastAPI(lifespan=lifespan)
++    @app.get('/health')
++    def health(): return {'alive':True}
++    @app.get('/ready')
++    def ready():
++        state=app.state.service
++        return JSONResponse({'ready':state.ready},status_code=200 if state.ready else 503)
++    if debug:
++        @app.get('/debug')
++        def inspect(): return app.state.service.debug()
++    @app.post('/generate')
++    async def generate(request: Request):
++        try:
++            # Stream and bound the body before decoding; Content-Length is not trusted.
++            body=bytearray()
++            async for chunk in request.stream():
++                body.extend(chunk)
++                if len(body)>65536: return JSONResponse({'error':'body too large'},status_code=413)
++            result=await run_in_threadpool(app.state.service.generate,json.loads(body))
++            return result
++        except Unavailable as exc: return JSONResponse({'error':str(exc)},status_code=503)
++        except Busy as exc: return JSONResponse({'error':str(exc)},status_code=429)
++        except (ValueError,TypeError) as exc: return JSONResponse({'error':str(exc)},status_code=400)
++    return app
++
++
+ def main():
+-    p=argparse.ArgumentParser();p.add_argument('--workspace',type=Path,default=Path('.lab'))
+-    p.add_argument('--port',type=int,default=8091);p.add_argument('--warmup-seconds',type=float,default=5)
+-    args=p.parse_args();state=ServiceState(args.workspace,args.warmup_seconds)
+-    server=ThreadingHTTPServer(('127.0.0.1',args.port),handler_for(state))
+-    print(f'STUB ONLY: http://127.0.0.1:{server.server_port}',flush=True)
+-    try:server.serve_forever()
+-    except KeyboardInterrupt:pass
+-    finally:server.server_close()
++    p=argparse.ArgumentParser()
++    p.add_argument('--workspace',type=Path,default=Path('.lab'))
++    p.add_argument('--port',type=int,default=8091)
++    p.add_argument('--warmup-seconds',type=float,default=5)
++    p.add_argument('--engine',choices=['stdlib','fastapi'],default=os.environ.get('HW8910_HTTP_ENGINE','stdlib'))
++    p.add_argument('--backend',choices=['stub','real'],default='stub')
++    p.add_argument('--debug',action='store_true')
++    args=p.parse_args()
++    factory=StubBackend if args.backend=='stub' else TransformersBackend
++    if args.engine=='fastapi':
++        import uvicorn
++        uvicorn.run(create_app(args.workspace,args.warmup_seconds,factory,debug=args.debug or args.backend=='stub'),
++                    host='127.0.0.1',port=args.port,log_level='warning')
++    else:
++        state=ServiceState(args.workspace,args.warmup_seconds,factory)
++        server=ThreadingHTTPServer(('127.0.0.1',args.port),handler_for(state,debug=args.debug or args.backend=='stub'))
++        print(f'http://127.0.0.1:{server.server_port}',flush=True)
++        try: server.serve_forever()
++        except KeyboardInterrupt: pass
++        finally: server.server_close()
+ 
+ 
+-if __name__=='__main__':main()
++if __name__=='__main__': main()

@@ -23,7 +23,7 @@ def read(path):
 
 
 def write(path,value):
-    Path(path).write_text(json.dumps(value,ensure_ascii=False,indent=2))
+    release.atomic_bytes(path, release.canonical(value)+b'\n')
 
 
 def initialize(root):
@@ -62,23 +62,26 @@ def prepare(root):
     write(entry,result);print('PREPARED',result['input_sha256']);return result
 
 
-def run(root,report_name,fail_after_prepare=False):
-    prepared=prepare(root)
+def run(root,report_name,fail_after_prepare=False,manifest_name='manifest-B.json',fail_after_pointer=False):
+    import uuid
+    with (root/'attempts.jsonl').open('a') as stream:
+        stream.write(json.dumps({'attempt_id':str(uuid.uuid4()),'report':report_name})+'\n')
+    release.recover_publication(root)
+    prepare(root)
     if fail_after_prepare:raise RuntimeError('Инъекция сбоя после подготовки')
-    manifest=read(root/'manifest-B.json');report=read(root/report_name)
-    release.publish(manifest,report,root/'accepted.json')
-    with (root/'publications.jsonl').open('a') as f:
-        f.write(json.dumps({'model_id':manifest['model_id'],'prepared':prepared['input_sha256']})+'\n')
-    print('PUBLISHED',manifest['model_id'])
+    manifest=read(root/manifest_name);report=read(root/report_name)
+    result=release.publish_event(manifest,report,root,fail_after_pointer)
+    print('PUBLISHED' if result['new_event'] else 'ALREADY_PUBLISHED',manifest['model_id'])
 
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--workspace',type=Path,default=Path('.lab'))
     sub=parser.add_subparsers(dest='command',required=True);sub.add_parser('init')
     run_parser=sub.add_parser('run');run_parser.add_argument('--report',default='report-B.json');run_parser.add_argument('--fail-after-prepare',action='store_true')
+    run_parser.add_argument('--manifest',default='manifest-B.json');run_parser.add_argument('--fail-after-pointer',action='store_true')
     args=parser.parse_args()
     if args.command=='init':initialize(args.workspace)
-    else:run(args.workspace,args.report,args.fail_after_prepare)
+    else:run(args.workspace,args.report,args.fail_after_prepare,args.manifest,args.fail_after_pointer)
 
 
 if __name__=='__main__':main()

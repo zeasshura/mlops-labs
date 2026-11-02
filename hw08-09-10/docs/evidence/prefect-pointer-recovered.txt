@@ -1,0 +1,11 @@
+06:49:32.734 | INFO    | Flow run 'succinct-markhor' - Beginning flow run 'succinct-markhor' for flow 'validated-model-release'
+06:49:32.766 | INFO    | Flow run 'succinct-markhor' - View at http://127.0.0.1:4208/runs/flow-run/8e2ecd8a-b0ec-4327-801a-75d7f0d869a2
+06:49:32.877 | INFO    | Task run 'prepare_data-3c1' - Finished in state Cached(type=COMPLETED)
+06:49:32.880 | INFO    | Flow run 'succinct-markhor' - PREPARATION_DESCRIPTOR {'cache_key': '804e3b5543853c78aad1eb58af67e9dbd4753e8a7b365007f4150f8d1bee5157', 'artifact_uri': '/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw08-09-10/.lab-flow-crash/cache/804e3b5543853c78aad1eb58af67e9dbd4753e8a7b365007f4150f8d1bee5157.json'}
+06:49:32.912 | INFO    | Task run 'obtain_artifact-e06' - Finished in state Completed()
+06:49:32.946 | INFO    | Task run 'evaluate_admission-6ae' - Finished in state Completed()
+06:49:33.028 | INFO    | Task run 'publish_release-34e' - Finished in state Completed()
+06:49:33.032 | INFO    | Flow run 'succinct-markhor' - RELEASE {'release_id': '330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda', 'model_id': 'fixture-B', 'new_event': False}
+06:49:33.114 | INFO    | Flow run 'succinct-markhor' - Finished in state Completed()
+
+EXIT_CODE=0

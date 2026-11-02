@@ -1,0 +1,16 @@
+[project]
+name = "mlops-hw08-10"
+version = "0.1.0"
+requires-python = ">=3.12,<3.13"
+dependencies = ["prefect==3.6.6", "fastapi==0.118.3", "uvicorn==0.54.0", "httpx==0.28.1"]
+
+[project.optional-dependencies]
+model = ["torch==2.14.0", "transformers==5.17.0", "peft==0.21.0", "mlflow==2.22.2"]
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
