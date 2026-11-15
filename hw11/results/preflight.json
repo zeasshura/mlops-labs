@@ -1,0 +1,12 @@
+{
+  "platform": "Linux-7.2.8-200.fc44.x86_64-x86_64-with-glibc2.43",
+  "cpus": 8,
+  "disk_total_bytes": 253282484224,
+  "disk_free_bytes": 211467968512,
+  "planned_node_memory_bytes": 4294967296,
+  "planned_node_cpus": 4,
+  "planned_total_disk_budget_gib": 10,
+  "prometheus_retention": "2h / 128MB",
+  "model_backend": "simulated",
+  "volumes": "emptyDir only, 256Mi metrics, no model weights"
+}
