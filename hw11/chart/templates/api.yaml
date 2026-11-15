@@ -1,0 +1,118 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-config
+data:
+  MODEL_VERSION: {{ .Values.modelVersion | quote }}
+  MODEL_SHA256: {{ .Values.modelSha256 | quote }}
+  WARMUP_SECONDS: {{ .Values.warmupSeconds | quote }}
+  BROKEN_READINESS: {{ .Values.brokenReadiness | quote }}
+  NEVER_READY: {{ .Values.neverReady | quote }}
+  MAX_RUNNING: {{ .Values.maxRunning | quote }}
+  MAX_WAITING: {{ .Values.maxWaiting | quote }}
+  CACHE_ENTRIES: {{ .Values.cacheEntries | quote }}
+  HIT_CPU_SECONDS: {{ .Values.hitCpuSeconds | quote }}
+  MISS_CPU_SECONDS: {{ .Values.missCpuSeconds | quote }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+spec:
+  {{- if not .Values.hpa.enabled }}
+  replicas: {{ .Values.replicas }}
+  {{- end }}
+  minReadySeconds: 3
+  progressDeadlineSeconds: 180
+  revisionHistoryLimit: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels: {app: hw11-api}
+  template:
+    metadata:
+      labels: {app: hw11-api}
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8091"
+        config-sha: {{ dict "version" .Values.modelVersion "sha" .Values.modelSha256 "warmup" .Values.warmupSeconds "neverReady" .Values.neverReady "broken" .Values.brokenReadiness "running" .Values.maxRunning "waiting" .Values.maxWaiting "cache" .Values.cacheEntries "hit" .Values.hitCpuSeconds "miss" .Values.missCpuSeconds | toJson | sha256sum | quote }}
+    spec:
+      terminationGracePeriodSeconds: 45
+      containers:
+        - name: api
+          image: {{ .Values.image }}
+          imagePullPolicy: Never
+          ports: [{name: http, containerPort: 8091}]
+          envFrom: [{configMapRef: {name: api-config}}]
+          env:
+            - name: POD_NAME
+              valueFrom: {fieldRef: {fieldPath: metadata.name}}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          startupProbe:
+            httpGet: {path: {{ if .Values.brokenReadiness }}/health{{ else }}/startup{{ end }}, port: http}
+            periodSeconds: 1
+            failureThreshold: 90
+            timeoutSeconds: 1
+          readinessProbe:
+            httpGet: {path: {{ if .Values.brokenReadiness }}/health{{ else }}/ready{{ end }}, port: http}
+            periodSeconds: 1
+            failureThreshold: 1
+            timeoutSeconds: 1
+          livenessProbe:
+            httpGet: {path: /health, port: http}
+            periodSeconds: 5
+            failureThreshold: 3
+            timeoutSeconds: 2
+          lifecycle:
+            preStop:
+              exec:
+                command: [python, -c, "import urllib.request,time; urllib.request.urlopen(urllib.request.Request('http://127.0.0.1:8091/drain',data=b'{}')); time.sleep(6)"]
+---
+{{ range $name, $affinity := dict "balanced" "None" "sticky" "ClientIP" "fixed" "None" "api" .Values.serviceAffinity }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $name }}
+spec:
+  selector: {app: hw11-api}
+  ports: [{port: 8091, targetPort: http, name: http}]
+  sessionAffinity: {{ $affinity }}
+  {{- if eq $affinity "ClientIP" }}
+  sessionAffinityConfig:
+    clientIP: {timeoutSeconds: 10800}
+  {{- end }}
+---
+{{ end }}
+apiVersion: v1
+kind: Service
+metadata: {name: api-headless}
+spec:
+  clusterIP: None
+  selector: {app: hw11-api}
+  ports: [{port: 8091, targetPort: http, name: http}]
+---
+{{- if .Values.hpa.enabled }}
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata: {name: api}
+spec:
+  scaleTargetRef: {apiVersion: apps/v1, kind: Deployment, name: api}
+  minReplicas: 2
+  maxReplicas: 3
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target: {type: Utilization, averageUtilization: {{ .Values.hpa.targetCPU }}}
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 0
+      policies: [{type: Pods, value: 1, periodSeconds: 15}]
+    scaleDown:
+      stabilizationWindowSeconds: {{ .Values.hpa.downWindowSeconds }}
+      policies: [{type: Pods, value: 1, periodSeconds: 15}]
+{{- end }}

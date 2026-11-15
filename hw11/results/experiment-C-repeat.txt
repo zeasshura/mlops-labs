@@ -1,0 +1,12 @@
+Monitoring query ranges and server request journals exported.
+C-cpu-pressure 587 / 1440 completed
+C-hot-affinity 282 / 360 completed
+Real HPA pressure, 2->3->2, hot affinity and alert recovery recorded.
+Both alerts passed inactive -> pending -> firing -> inactive assertions.
+Monitoring query ranges and server request journals exported.
+Force-kill verified after first content; stream aborted and service recovered.
+A-matched-broken 80 / 80 completed
+broken 32 premature / 80 attempts
+A-matched-fixed 80 / 80 completed
+fixed 0 premature / 80 attempts
+Matched warmup comparison passed; fixed probes and HPA restored.

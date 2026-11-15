@@ -1,0 +1,7 @@
+2026-11-15T20:13:16.674295916Z INFO:     Started server process [1]
+2026-11-15T20:13:16.674320153Z INFO:     Waiting for application startup.
+2026-11-15T20:13:16.674722632Z {"utc": 1794773596.674609, "monotonic": 58753.571560663, "pod": "api-59bf8f58dc-tbtmz", "backend_mode": "simulated", "event": "warmup_start", "model_id": "simulated-model-A"}
+2026-11-15T20:13:16.674738073Z INFO:     Application startup complete.
+2026-11-15T20:13:16.675029007Z INFO:     Uvicorn running on http://0.0.0.0:8091 (Press CTRL+C to quit)
+2026-11-15T20:13:36.676172462Z {"utc": 1794773616.6757936, "monotonic": 58773.572746485, "pod": "api-59bf8f58dc-tbtmz", "backend_mode": "simulated", "event": "warmup_complete", "model_id": "simulated-model-A"}
+2026-11-15T20:15:59.248994958Z {"utc": 1794773759.2488656, "monotonic": 58916.145817276, "pod": "api-59bf8f58dc-tbtmz", "backend_mode": "simulated", "event": "draining", "model_id": "simulated-model-A", "active": 0, "waiting": 0}

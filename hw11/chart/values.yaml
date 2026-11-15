@@ -1,0 +1,24 @@
+image: localhost/hw11-api:1.0.1
+replicas: 2
+modelVersion: A
+modelSha256: 2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca
+warmupSeconds: 20
+brokenReadiness: false
+neverReady: false
+maxRunning: 1
+maxWaiting: 8
+cacheEntries: 8
+hitCpuSeconds: 0.15
+missCpuSeconds: 0.6
+serviceAffinity: None
+hpa:
+  enabled: false
+  targetCPU: 70
+  downWindowSeconds: 30
+resources:
+  requests:
+    cpu: 100m
+    memory: 64Mi
+  limits:
+    cpu: 400m
+    memory: 128Mi

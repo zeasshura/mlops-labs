@@ -1,0 +1,85 @@
+STEP 1/10: FROM docker.io/library/python:3.12.12-slim
+Trying to pull docker.io/library/python:3.12.12-slim...
+Getting image source signatures
+Copying blob sha256:2d517a4d89f51a6619f3e61d8e80559d6e1529e85e8343bfcdc6ce0536f2195f
+Copying blob sha256:a546a81ba946fd444a8e2632f1d09e8ce28083a58f8f066327d665d943a6695b
+Copying blob sha256:90b93dccd534efdf46d219fcfa008ddce66480ce0259a99f6e756f629f018030
+Copying blob sha256:206356c42440674ecbdf1070cf70ce8ef7885ac2e5c56f1ecf800b758f6b0419
+Copying config sha256:5265ced2e36c835ba9c04ed8be4eea1ec30d9523da97c7797bbc6d9a4b3fcfcb
+Writing manifest to image destination
+STEP 2/10: WORKDIR /app
+--> ccb976e496a9
+STEP 3/10: ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1
+--> f86187a1b778
+STEP 4/10: COPY requirements-service.txt /app/
+--> 0b76be4e8142
+STEP 5/10: RUN pip install --no-cache-dir -r requirements-service.txt
+Collecting annotated-types==0.8.0 (from -r requirements-service.txt (line 3))
+  Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+Collecting anyio==4.16.0 (from -r requirements-service.txt (line 5))
+  Downloading anyio-4.16.0-py3-none-any.whl.metadata (4.7 kB)
+Collecting certifi==2026.10.23 (from -r requirements-service.txt (line 9))
+  Downloading certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+Collecting click==8.5.1 (from -r requirements-service.txt (line 13))
+  Downloading click-8.5.1-py3-none-any.whl.metadata (2.6 kB)
+Collecting fastapi==0.118.3 (from -r requirements-service.txt (line 15))
+  Downloading fastapi-0.118.3-py3-none-any.whl.metadata (28 kB)
+Collecting h11==0.16.0 (from -r requirements-service.txt (line 17))
+  Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting httpcore==1.0.9 (from -r requirements-service.txt (line 21))
+  Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting httpx==0.28.1 (from -r requirements-service.txt (line 23))
+  Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting idna==3.20 (from -r requirements-service.txt (line 25))
+  Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting prometheus-client==0.23.1 (from -r requirements-service.txt (line 29))
+  Downloading prometheus_client-0.23.1-py3-none-any.whl.metadata (1.9 kB)
+Collecting pydantic==2.14.3 (from -r requirements-service.txt (line 31))
+  Downloading pydantic-2.14.3-py3-none-any.whl.metadata (141 kB)
+Collecting pydantic-core==2.50.4 (from -r requirements-service.txt (line 33))
+  Downloading pydantic_core-2.50.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (6.6 kB)
+Collecting starlette==0.48.0 (from -r requirements-service.txt (line 35))
+  Downloading starlette-0.48.0-py3-none-any.whl.metadata (6.3 kB)
+Collecting typing-extensions==4.16.0 (from -r requirements-service.txt (line 37))
+  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting typing-inspection==0.4.5 (from -r requirements-service.txt (line 45))
+  Downloading typing_inspection-0.4.5-py3-none-any.whl.metadata (2.6 kB)
+Collecting uvicorn==0.54.0 (from -r requirements-service.txt (line 47))
+  Downloading uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)
+Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Downloading anyio-4.16.0-py3-none-any.whl (134 kB)
+Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+Downloading click-8.5.1-py3-none-any.whl (126 kB)
+Downloading fastapi-0.118.3-py3-none-any.whl (97 kB)
+Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+Downloading idna-3.20-py3-none-any.whl (69 kB)
+Downloading prometheus_client-0.23.1-py3-none-any.whl (61 kB)
+Downloading pydantic-2.14.3-py3-none-any.whl (494 kB)
+Downloading pydantic_core-2.50.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (2.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB 396.9 kB/s eta 0:00:00
+Downloading starlette-0.48.0-py3-none-any.whl (73 kB)
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Downloading typing_inspection-0.4.5-py3-none-any.whl (14 kB)
+Downloading uvicorn-0.54.0-py3-none-any.whl (87 kB)
+Installing collected packages: typing-extensions, prometheus-client, idna, h11, click, certifi, annotated-types, uvicorn, typing-inspection, pydantic-core, httpcore, anyio, starlette, pydantic, httpx, fastapi
+Successfully installed annotated-types-0.8.0 anyio-4.16.0 certifi-2026.10.23 click-8.5.1 fastapi-0.118.3 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.20 prometheus-client-0.23.1 pydantic-2.14.3 pydantic-core-2.50.4 starlette-0.48.0 typing-extensions-4.16.0 typing-inspection-0.4.5 uvicorn-0.54.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+--> 1c67c6d553c5
+STEP 6/10: COPY app.py client.py /app/
+--> b3c7532c95dd
+STEP 7/10: COPY artifacts /app/artifacts
+--> 69c721fb23df
+STEP 8/10: USER 10001
+--> e57845f9b7f2
+STEP 9/10: EXPOSE 8091
+--> 21aa47faf711
+STEP 10/10: CMD ["python", "-m", "uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8091", "--timeout-graceful-shutdown", "30", "--no-access-log"]
+COMMIT localhost/hw11-api:1.0.0
+--> 199ab538d679
+Successfully tagged localhost/hw11-api:1.0.0
+199ab538d6796607a2bbca6bd5ad17d06468ffad5d012c7f66ff1baf0d131bef

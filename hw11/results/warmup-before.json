@@ -1,0 +1,171 @@
+[
+  {
+    "epoch": 1794769051.2805142,
+    "error": "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw11/.tools/kubectl --kubeconfig /home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw11/.runtime/kubeconfig -n hw11\nTraceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1338, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1384, in _send_request\n    self.endheaders(body, encode_ch"
+  },
+  {
+    "epoch": 1794769052.8483207,
+    "error": "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw11/.tools/kubectl --kubeconfig /home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw11/.runtime/kubeconfig -n hw11\nTraceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1338, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1384, in _send_request\n    self.endheaders(body, encode_ch"
+  },
+  {
+    "epoch": 1794769056.0273144,
+    "response": {
+      "status": 200,
+      "body": "{\"request_id\": \"31607ca6-4bb1-42a9-b09c-6633dcc650ed\", \"pod\": \"api-59db9c979c-4hxps\", \"model_id\": \"simulated-model-A\", \"runtime_sha256\": \"2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca\", \"backend_mode\": \"simulated\", \"part\": 0, \"text\": \"SIMULATED 0\", \"complete\": true, \"queue_seconds\": 0.0006946079956833273, \"cache_hit\": false, \"warmup_finished_at_accept\": false, \"history\": []}\n"
+    }
+  },
+  {
+    "epoch": 1794769058.073175,
+    "response": {
+      "status": 200,
+      "body": "{\"request_id\": \"a31aaa37-700d-4092-bf8f-3360e09aa3c8\", \"pod\": \"api-59db9c979c-4hxps\", \"model_id\": \"simulated-model-A\", \"runtime_sha256\": \"2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca\", \"backend_mode\": \"simulated\", \"part\": 0, \"text\": \"SIMULATED 0\", \"complete\": true, \"queue_seconds\": 0.0011606730040512048, \"cache_hit\": true, \"warmup_finished_at_accept\": false, \"history\": []}\n"
+    }
+  },
+  {
+    "epoch": 1794769061.2627416,
+    "response": {
+      "status": 200,
+      "body": "{\"request_id\": \"469aa4a5-526f-4d79-bc15-fb7025978c29\", \"pod\": \"api-59db9c979c-ssrnh\", \"model_id\": \"simulated-model-A\", \"runtime_sha256\": \"2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca\", \"backend_mode\": \"simulated\", \"part\": 0, \"text\": \"SIMULATED 0\", \"complete\": true, \"queue_seconds\": 0.0006163070065667853, \"cache_hit\": false, \"warmup_finished_at_accept\": false, \"history\": []}\n"
+    }
+  },
+  {
+    "epoch": 1794769063.4247642,
+    "response": {
+      "status": 200,
+      "body": "{\"request_id\": \"80ff7f53-9a99-485e-ba10-58393ad660f1\", \"pod\": \"api-59db9c979c-ssrnh\", \"model_id\": \"simulated-model-A\", \"runtime_sha256\": \"2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca\", \"backend_mode\": \"simulated\", \"part\": 0, \"text\": \"SIMULATED 0\", \"complete\": true, \"queue_seconds\": 0.0013510170028894208, \"cache_hit\": true, \"warmup_finished_at_accept\": false, \"history\": []}\n"
+    }
+  },
+  {
+    "epoch": 1794769065.2792127,
+    "response": {
+      "status": 200,
+      "body": "{\"request_id\": \"32b393ba-50f6-4614-858c-eb7a54b1f42e\", \"pod\": \"api-59db9c979c-ssrnh\", \"model_id\": \"simulated-model-A\", \"runtime_sha256\": \"2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca\", \"backend_mode\": \"simulated\", \"part\": 0, \"text\": \"SIMULATED 0\", \"complete\": true, \"queue_seconds\": 0.00041309399966849014, \"cache_hit\": true, \"warmup_finished_at_accept\": false, \"history\": []}\n"
+    }
+  },
+  {
+    "epoch": 1794769067.1673794,
+    "response": {
+      "status": 200,
+      "body": "{\"request_id\": \"a5a2ba84-335e-47f9-9dbe-4cfbe235fb21\", \"pod\": \"api-59db9c979c-4hxps\", \"model_id\": \"simulated-model-A\", \"runtime_sha256\": \"2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca\", \"backend_mode\": \"simulated\", \"part\": 0, \"text\": \"SIMULATED 0\", \"complete\": true, \"queue_seconds\": 0.0003909150036633946, \"cache_hit\": true, \"warmup_finished_at_accept\": false, \"history\": []}\n"
+    }
+  },
+  {
+    "epoch": 1794769069.1246612,
+    "response": {
+      "status": 200,
+      "body": "{\"request_id\": \"75750f32-d2c1-4dd4-8841-925f2616570e\", \"pod\": \"api-59db9c979c-4hxps\", \"model_id\": \"simulated-model-A\", \"runtime_sha256\": \"2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca\", \"backend_mode\": \"simulated\", \"part\": 0, \"text\": \"SIMULATED 0\", \"complete\": true, \"queue_seconds\": 0.0010627379961078987, \"cache_hit\": true, \"warmup_finished_at_accept\": false, \"history\": []}\n"
+    }
+  },
+  {
+    "epoch": 1794769071.1704535,
+    "response": {
+      "status": 200,
+      "body": "{\"request_id\": \"0507e223-a6cd-460c-8ab9-5b2d624401f8\", \"pod\": \"api-59db9c979c-4hxps\", \"model_id\": \"simulated-model-A\", \"runtime_sha256\": \"2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca\", \"backend_mode\": \"simulated\", \"part\": 0, \"text\": \"SIMULATED 0\", \"complete\": true, \"queue_seconds\": 0.00040340499981539324, \"cache_hit\": true, \"warmup_finished_at_accept\": false, \"history\": []}\n"
+    }
+  },
+  {
+    "epoch": 1794769073.184979,
+    "response": {
+      "status": 200,
+      "body": "{\"request_id\": \"ac741b3c-2748-4583-a83e-a34f0517c01a\", \"pod\": \"api-59db9c979c-ssrnh\", \"model_id\": \"simulated-model-A\", \"runtime_sha256\": \"2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca\", \"backend_mode\": \"simulated\", \"part\": 0, \"text\": \"SIMULATED 0\", \"complete\": true, \"queue_seconds\": 0.0004702709993580356, \"cache_hit\": true, \"warmup_finished_at_accept\": true, \"history\": []}\n"
+    }
+  },
+  {
+    "epoch": 1794769075.16853,
+    "response": {
+      "status": 200,
+      "body": "{\"request_id\": \"af3754ff-3b62-4973-9ab0-29d225f1b890\", \"pod\": \"api-59db9c979c-4hxps\", \"model_id\": \"simulated-model-A\", \"runtime_sha256\": \"2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca\", \"backend_mode\": \"simulated\", \"part\": 0, \"text\": \"SIMULATED 0\", \"complete\": true, \"queue_seconds\": 0.00047103100223466754, \"cache_hit\": true, \"warmup_finished_at_accept\": true, \"history\": []}\n"
+    }
+  },
+  {
+    "epoch": 1794769077.2090201,
+    "response": {
+      "status": 200,
+      "body": "{\"request_id\": \"5be06721-17c2-4669-a25b-d8c4315eec82\", \"pod\": \"api-59db9c979c-4hxps\", \"model_id\": \"simulated-model-A\", \"runtime_sha256\": \"2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca\", \"backend_mode\": \"simulated\", \"part\": 0, \"text\": \"SIMULATED 0\", \"complete\": true, \"queue_seconds\": 0.00041894900641636923, \"cache_hit\": true, \"warmup_finished_at_accept\": true, \"history\": []}\n"
+    }
+  },
+  {
+    "epoch": 1794769079.1384559,
+    "response": {
+      "status": 200,
+      "body": "{\"request_id\": \"4930b230-0076-4be6-9514-0d9deaf14988\", \"pod\": \"api-59db9c979c-4hxps\", \"model_id\": \"simulated-model-A\", \"runtime_sha256\": \"2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca\", \"backend_mode\": \"simulated\", \"part\": 0, \"text\": \"SIMULATED 0\", \"complete\": true, \"queue_seconds\": 0.0013352210007724352, \"cache_hit\": true, \"warmup_finished_at_accept\": true, \"history\": []}\n"
+    }
+  },
+  {
+    "epoch": 1794769081.366225,
+    "response": {
+      "status": 200,
+      "body": "{\"request_id\": \"f86e2938-1075-4004-8032-49bdcfeb3371\", \"pod\": \"api-59db9c979c-ssrnh\", \"model_id\": \"simulated-model-A\", \"runtime_sha256\": \"2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca\", \"backend_mode\": \"simulated\", \"part\": 0, \"text\": \"SIMULATED 0\", \"complete\": true, \"queue_seconds\": 0.0008567269978811964, \"cache_hit\": true, \"warmup_finished_at_accept\": true, \"history\": []}\n"
+    }
+  },
+  {
+    "epoch": 1794769083.3796554,
+    "response": {
+      "status": 200,
+      "body": "{\"request_id\": \"ad68c7c7-71d3-4b01-9150-f26a8598672f\", \"pod\": \"api-59db9c979c-ssrnh\", \"model_id\": \"simulated-model-A\", \"runtime_sha256\": \"2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca\", \"backend_mode\": \"simulated\", \"part\": 0, \"text\": \"SIMULATED 0\", \"complete\": true, \"queue_seconds\": 0.0004279889981262386, \"cache_hit\": true, \"warmup_finished_at_accept\": true, \"history\": []}\n"
+    }
+  },
+  {
+    "epoch": 1794769085.211314,
+    "response": {
+      "status": 200,
+      "body": "{\"request_id\": \"b8636f54-3b1c-45ec-b1ca-d55b3fdf0dda\", \"pod\": \"api-59db9c979c-4hxps\", \"model_id\": \"simulated-model-A\", \"runtime_sha256\": \"2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca\", \"backend_mode\": \"simulated\", \"part\": 0, \"text\": \"SIMULATED 0\", \"complete\": true, \"queue_seconds\": 0.0023793910004314966, \"cache_hit\": true, \"warmup_finished_at_accept\": true, \"history\": []}\n"
+    }
+  },
+  {
+    "epoch": 1794769087.4819312,
+    "response": {
+      "status": 200,
+      "body": "{\"request_id\": \"4a782d7d-3156-4cee-a24e-a3a6da4e5ba4\", \"pod\": \"api-59db9c979c-ssrnh\", \"model_id\": \"simulated-model-A\", \"runtime_sha256\": \"2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca\", \"backend_mode\": \"simulated\", \"part\": 0, \"text\": \"SIMULATED 0\", \"complete\": true, \"queue_seconds\": 0.0007439109976985492, \"cache_hit\": true, \"warmup_finished_at_accept\": true, \"history\": []}\n"
+    }
+  },
+  {
+    "epoch": 1794769089.3863547,
+    "response": {
+      "status": 200,
+      "body": "{\"request_id\": \"29fb6857-7bab-4499-b655-27ee21949631\", \"pod\": \"api-59db9c979c-ssrnh\", \"model_id\": \"simulated-model-A\", \"runtime_sha256\": \"2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca\", \"backend_mode\": \"simulated\", \"part\": 0, \"text\": \"SIMULATED 0\", \"complete\": true, \"queue_seconds\": 0.0004890750060440041, \"cache_hit\": true, \"warmup_finished_at_accept\": true, \"history\": []}\n"
+    }
+  },
+  {
+    "epoch": 1794769091.1718345,
+    "response": {
+      "status": 200,
+      "body": "{\"request_id\": \"069215e3-c544-4e5d-a91b-c28f47f601ee\", \"pod\": \"api-59db9c979c-4hxps\", \"model_id\": \"simulated-model-A\", \"runtime_sha256\": \"2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca\", \"backend_mode\": \"simulated\", \"part\": 0, \"text\": \"SIMULATED 0\", \"complete\": true, \"queue_seconds\": 0.0004175430003670044, \"cache_hit\": true, \"warmup_finished_at_accept\": true, \"history\": []}\n"
+    }
+  },
+  {
+    "epoch": 1794769093.3826149,
+    "response": {
+      "status": 200,
+      "body": "{\"request_id\": \"586286f4-172b-432c-a500-20beea69278b\", \"pod\": \"api-59db9c979c-ssrnh\", \"model_id\": \"simulated-model-A\", \"runtime_sha256\": \"2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca\", \"backend_mode\": \"simulated\", \"part\": 0, \"text\": \"SIMULATED 0\", \"complete\": true, \"queue_seconds\": 0.0005333129956852645, \"cache_hit\": true, \"warmup_finished_at_accept\": true, \"history\": []}\n"
+    }
+  },
+  {
+    "epoch": 1794769095.3732455,
+    "response": {
+      "status": 200,
+      "body": "{\"request_id\": \"6ee1b351-b955-430d-8e9d-08e83d4fb019\", \"pod\": \"api-59db9c979c-4hxps\", \"model_id\": \"simulated-model-A\", \"runtime_sha256\": \"2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca\", \"backend_mode\": \"simulated\", \"part\": 0, \"text\": \"SIMULATED 0\", \"complete\": true, \"queue_seconds\": 0.0011090179978054948, \"cache_hit\": true, \"warmup_finished_at_accept\": true, \"history\": []}\n"
+    }
+  },
+  {
+    "epoch": 1794769097.4838576,
+    "response": {
+      "status": 200,
+      "body": "{\"request_id\": \"539cf61f-14de-41b7-b7ea-d11b2c721052\", \"pod\": \"api-59db9c979c-ssrnh\", \"model_id\": \"simulated-model-A\", \"runtime_sha256\": \"2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca\", \"backend_mode\": \"simulated\", \"part\": 0, \"text\": \"SIMULATED 0\", \"complete\": true, \"queue_seconds\": 0.0004583380068652332, \"cache_hit\": true, \"warmup_finished_at_accept\": true, \"history\": []}\n"
+    }
+  },
+  {
+    "epoch": 1794769099.669285,
+    "response": {
+      "status": 200,
+      "body": "{\"request_id\": \"2bbf03f0-3ca1-479d-972e-3f7e4fcbcc58\", \"pod\": \"api-59db9c979c-ssrnh\", \"model_id\": \"simulated-model-A\", \"runtime_sha256\": \"2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca\", \"backend_mode\": \"simulated\", \"part\": 0, \"text\": \"SIMULATED 0\", \"complete\": true, \"queue_seconds\": 0.00043396599357947707, \"cache_hit\": true, \"warmup_finished_at_accept\": true, \"history\": []}\n"
+    }
+  },
+  {
+    "epoch": 1794769101.776286,
+    "response": {
+      "status": 200,
+      "body": "{\"request_id\": \"0accce53-32af-47b7-b391-096d512e4194\", \"pod\": \"api-59db9c979c-4hxps\", \"model_id\": \"simulated-model-A\", \"runtime_sha256\": \"2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca\", \"backend_mode\": \"simulated\", \"part\": 0, \"text\": \"SIMULATED 0\", \"complete\": true, \"queue_seconds\": 0.0005461199980345555, \"cache_hit\": true, \"warmup_finished_at_accept\": true, \"history\": []}\n"
+    }
+  }
+]

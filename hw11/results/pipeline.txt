@@ -1,0 +1,40 @@
+Five Kubernetes checks passed; beginning full matrix.
+B-normal-uniform-1 359 / 360 completed
+B-normal-uniform-2 359 / 360 completed
+B-normal-uniform-3 357 / 360 completed
+B-normal-hot-1 360 / 360 completed
+B-normal-hot-2 360 / 360 completed
+B-normal-hot-3 358 / 360 completed
+B-affinity-uniform-1 322 / 360 completed
+B-affinity-uniform-2 323 / 360 completed
+B-affinity-uniform-3 323 / 360 completed
+B-affinity-hot-1 257 / 360 completed
+B-affinity-hot-2 258 / 360 completed
+B-affinity-hot-3 256 / 360 completed
+B-fixed-uniform-1 357 / 360 completed
+B-fixed-uniform-2 358 / 360 completed
+B-fixed-uniform-3 359 / 360 completed
+B-fixed-hot-1 358 / 360 completed
+B-fixed-hot-2 360 / 360 completed
+B-fixed-hot-3 359 / 360 completed
+All 18 full 120-second runs completed.
+Monitoring query ranges and server request journals exported.
+Traceback (most recent call last):
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw11/scripts/experiment_c.py", line 75, in <module>
+    main()
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw11/scripts/experiment_c.py", line 43, in main
+    rows,meta=run_load('C-cpu-pressure','balanced','uniform',120,12)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw11/lab.py", line 103, in run_load
+    if process.returncode:raise RuntimeError(errors[-3000:])
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: E1115 23:01:35.377741  342936 v2.go:167] "Unhandled Error" err="next reader: read tcp 127.0.0.1:35950->127.0.0.1:32927: i/o timeout"
+E1115 23:01:35.377795  342936 v2.go:150] "Unhandled Error" err="next reader: read tcp 127.0.0.1:35950->127.0.0.1:32927: i/o timeout"
+error: error reading from error stream: next reader: read tcp 127.0.0.1:35950->127.0.0.1:32927: i/o timeout
+
+Traceback (most recent call last):
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw11/scripts/continue_pipeline.py", line 17, in <module>
+    subprocess.run([sys.executable,'-u','scripts/experiment_c.py'],cwd=ROOT,check=True)
+  File "/usr/lib64/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw11/.venv/bin/python', '-u', 'scripts/experiment_c.py']' returned non-zero exit status 1.

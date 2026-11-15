@@ -1,0 +1,24 @@
+[
+  {
+    "pod": "api-59bf8f58dc-67w76",
+    "model_id": "simulated-model-A",
+    "runtime_sha256": "2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca",
+    "warmup_finished": true,
+    "running": 0,
+    "waiting": 0,
+    "calls": 0,
+    "cache_entries": 0,
+    "backend_mode": "simulated"
+  },
+  {
+    "pod": "api-59bf8f58dc-dhk7q",
+    "model_id": "simulated-model-A",
+    "runtime_sha256": "2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca",
+    "warmup_finished": true,
+    "running": 0,
+    "waiting": 0,
+    "calls": 0,
+    "cache_entries": 0,
+    "backend_mode": "simulated"
+  }
+]

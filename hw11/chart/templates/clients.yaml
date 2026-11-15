@@ -1,0 +1,17 @@
+{{ range $i := until 4 }}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: client-{{ $i }}
+  labels: {app: hw11-client}
+spec:
+  containers:
+    - name: client
+      image: {{ $.Values.image }}
+      imagePullPolicy: Never
+      command: [python, -c, "import time; time.sleep(86400)"]
+      resources:
+        requests: {cpu: 20m, memory: 32Mi}
+        limits: {cpu: 300m, memory: 96Mi}
+---
+{{ end }}

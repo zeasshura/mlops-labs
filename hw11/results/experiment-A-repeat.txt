@@ -1,0 +1,2 @@
+A-unready-B-fixed 17 / 17 completed
+Experiment A verified: bad/fixed warmup, zero-failure rollout, unready B, rollback, forced failure.

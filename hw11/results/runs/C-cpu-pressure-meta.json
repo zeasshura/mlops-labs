@@ -1,0 +1,15 @@
+{
+  "run_id": "C-cpu-pressure",
+  "service": "balanced",
+  "traffic": "uniform",
+  "duration_seconds": 120,
+  "rate": 12,
+  "start_epoch": 1794773385.2292686,
+  "end_epoch": 1794773509.4779441,
+  "schedule_sha256": "b48feb6439b91c93287cf36dc0ca71f55b780a3f88adca16f4affabf7562c4dd",
+  "cache_initial": "empty, verified reset on both warmed pods",
+  "keep_alive": false,
+  "planned": 1440,
+  "sent": 1440,
+  "completed": 587
+}

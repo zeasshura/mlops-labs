@@ -1,0 +1,10 @@
+A-rollout 32 / 32 completed
+A-unready-B 17 / 17 completed
+Traceback (most recent call last):
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw11/scripts/experiment_a.py", line 75, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/ashura/Stud/BMSTU-Stud/7 sem/ML_ops/mlops-labs/hw11/scripts/experiment_a.py", line 58, in main
+    assert all(r.get('model_id')=='simulated-model-A' for r in records if r['outcome']=='completed')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

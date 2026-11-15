@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    meta.helm.sh/release-name: hw11
+    meta.helm.sh/release-namespace: hw11
+  creationTimestamp: "2026-11-15T18:57:26Z"
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: api
+  namespace: hw11
+  resourceVersion: "6902"
+  uid: 79a6b5d3-81c0-421e-9214-5b9752370a53
+spec:
+  clusterIP: 10.96.129.160
+  clusterIPs:
+  - 10.96.129.160
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: http
+    port: 8091
+    protocol: TCP
+    targetPort: http
+  selector:
+    app: hw11-api
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

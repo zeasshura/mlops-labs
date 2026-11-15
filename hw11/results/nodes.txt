@@ -1,0 +1,2 @@
+NAME                       STATUS   ROLES           AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                         KERNEL-VERSION          CONTAINER-RUNTIME
+mlops-hw11-control-plane   Ready    control-plane   43s   v1.34.0   10.89.1.2     <none>        Debian GNU/Linux 12 (bookworm)   7.2.8-200.fc44.x86_64   containerd://2.1.3

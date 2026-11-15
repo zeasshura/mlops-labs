@@ -1,0 +1,5 @@
+{
+  "expected_assertion": "All successful responses were warmed",
+  "passed": false,
+  "premature_responses": 29
+}

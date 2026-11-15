@@ -1,0 +1,15 @@
+{
+  "run_id": "B-fixed-uniform-3",
+  "service": "api",
+  "traffic": "uniform",
+  "duration_seconds": 120,
+  "rate": 3,
+  "start_epoch": 1794772128.0911186,
+  "end_epoch": 1794772248.5418103,
+  "schedule_sha256": "b660953c6f0946706aae358c23b800ee1d30ac2123e5fa75702ec6e58d89ba61",
+  "cache_initial": "empty, verified reset on both warmed pods",
+  "keep_alive": false,
+  "planned": 360,
+  "sent": 360,
+  "completed": 359
+}

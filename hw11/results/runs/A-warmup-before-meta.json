@@ -1,0 +1,16 @@
+{
+  "run_id": "A-warmup-before",
+  "service": "balanced",
+  "traffic": "uniform",
+  "duration_seconds": 40,
+  "rate": 2,
+  "start_epoch": 1794769244.096604,
+  "end_epoch": 1794769284.1383893,
+  "schedule_sha256": "803781e546017e5f7f7d409f7f286777072d99e4d8426c6f2f2bfb7928c7ff0b",
+  "cache_initial": "not reset; lifecycle experiment retains cache state",
+  "keep_alive": false,
+  "planned": 80,
+  "sent": 80,
+  "completed": 80,
+  "metadata_correction": "run_load was called with reset=False; previous static cache label was inaccurate"
+}

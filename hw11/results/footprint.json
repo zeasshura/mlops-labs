@@ -1,0 +1,19 @@
+{
+  "epoch": 1794774111.2412014,
+  "disk_free_bytes_after": 207828619264,
+  "disk_free_bytes_before": 211467968512,
+  "task_directory_apparent_bytes": 1836725765,
+  "runtime_archives_and_kubeconfig_bytes": 1478216012,
+  "tools_bytes": 179803238,
+  "venv_apparent_bytes": 157984405,
+  "podman_system_df": "TYPE           TOTAL       ACTIVE      SIZE        RECLAIMABLE\nImages         26          3           3.562GB     2.274GB (64%)\nContainers     3           1           4.69MB      1.594MB (34%)\nLocal Volumes  5           3           4.251GB     48.97MB (1%)\n",
+  "own_node_volumes": [
+    {
+      "name": "c1901facce9332d1e32274b1efad7a56253aaf79b93527d5ab5e923422a009dd",
+      "destination": "/var",
+      "apparent_bytes": 4026935789
+    }
+  ],
+  "node_size": 3096241,
+  "note": "Free-space delta includes global shared caches and concurrent host activity. Image virtual sizes are not added as physical usage."
+}

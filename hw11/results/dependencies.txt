@@ -1,0 +1,39 @@
+Resolved 29 packages in 30.25s
+Downloading pillow (6.8MiB)
+Downloading pydantic-core (2.2MiB)
+Downloading fonttools (5.2MiB)
+Downloading matplotlib (8.3MiB)
+ Downloaded pydantic-core
+ Downloaded fonttools
+ Downloaded pillow
+ Downloaded matplotlib
+Prepared 9 packages in 1m 54s
+Installed 28 packages in 190ms
+ + annotated-types==0.8.0
+ + anyio==4.16.0
+ + certifi==2026.10.23
+ + click==8.5.1
+ + contourpy==1.4.0
+ + cycler==0.12.1
+ + fastapi==0.118.3
+ + fonttools==4.68.0
+ + h11==0.16.0
+ + httpcore==1.0.9
+ + httpx==0.28.1
+ + idna==3.20
+ + kiwisolver==1.5.1
+ + matplotlib==3.10.7
+ + numpy==2.5.4
+ + packaging==26.3
+ + pillow==13.0.0
+ + prometheus-client==0.23.1
+ + pydantic==2.14.3
+ + pydantic-core==2.50.4
+ + pyparsing==3.3.3
+ + python-dateutil==4.0.0
+ + pyyaml==6.0.3
+ + starlette==0.48.0
+ + typing-extensions==4.16.0
+ + typing-inspection==0.4.5
+ + tzdata==2026.6
+ + uvicorn==0.54.0

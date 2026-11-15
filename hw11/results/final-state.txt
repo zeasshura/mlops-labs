@@ -1,0 +1,22 @@
+NAME                                      READY   STATUS    RESTARTS      AGE     IP            NODE                       NOMINATED NODE   READINESS GATES
+pod/api-f675cb989-8zh9v                   1/1     Running   0             2m54s   10.244.0.51   mlops-hw11-control-plane   <none>           <none>
+pod/api-f675cb989-fdp45                   1/1     Running   0             64s     10.244.0.53   mlops-hw11-control-plane   <none>           <none>
+pod/client-0                              1/1     Running   1 (74m ago)   84m     10.244.0.5    mlops-hw11-control-plane   <none>           <none>
+pod/client-1                              1/1     Running   1 (74m ago)   84m     10.244.0.6    mlops-hw11-control-plane   <none>           <none>
+pod/client-2                              1/1     Running   1 (74m ago)   84m     10.244.0.7    mlops-hw11-control-plane   <none>           <none>
+pod/client-3                              1/1     Running   1 (74m ago)   84m     10.244.0.8    mlops-hw11-control-plane   <none>           <none>
+pod/grafana-578b9f5f96-42kh7              1/1     Running   0             12m     10.244.0.41   mlops-hw11-control-plane   <none>           <none>
+pod/kube-state-metrics-5fb8d54cfb-6q6z6   1/1     Running   0             73m     10.244.0.27   mlops-hw11-control-plane   <none>           <none>
+pod/prometheus-7777b897d8-vbqr2           1/1     Running   0             75m     10.244.0.21   mlops-hw11-control-plane   <none>           <none>
+
+NAME                   TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE   SELECTOR
+service/api            ClusterIP   10.96.129.160   <none>        8091/TCP   84m   app=hw11-api
+service/api-headless   ClusterIP   None            <none>        8091/TCP   84m   app=hw11-api
+service/balanced       ClusterIP   10.96.251.66    <none>        8091/TCP   84m   app=hw11-api
+service/fixed          ClusterIP   10.96.236.53    <none>        8091/TCP   84m   app=hw11-api
+service/grafana        ClusterIP   10.96.101.43    <none>        3000/TCP   84m   app=grafana
+service/prometheus     ClusterIP   10.96.213.122   <none>        9090/TCP   84m   app=prometheus
+service/sticky         ClusterIP   10.96.238.202   <none>        8091/TCP   84m   app=hw11-api
+
+NAME                                      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/api   Deployment/api   cpu: 7%/70%   2         3         2          79s

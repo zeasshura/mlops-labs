@@ -1,0 +1,10 @@
+test_01_warmup_excluded_from_ready_endpoints (test_kubernetes.KubernetesChecks.test_01_warmup_excluded_from_ready_endpoints) ... ok
+test_02_loaded_artifact_after_rollback (test_kubernetes.KubernetesChecks.test_02_loaded_artifact_after_rollback) ... ok
+test_03_pod_replacement_restores_version_and_dialogue (test_kubernetes.KubernetesChecks.test_03_pod_replacement_restores_version_and_dialogue) ... ok
+test_04_rejected_and_aborted_attempts_counted (test_kubernetes.KubernetesChecks.test_04_rejected_and_aborted_attempts_counted) ... ok
+test_05_two_dialogues_are_isolated (test_kubernetes.KubernetesChecks.test_05_two_dialogues_are_isolated) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 96.097s
+
+OK

@@ -1,0 +1,15 @@
+{
+  "run_id": "B-fixed-hot-1",
+  "service": "api",
+  "traffic": "hot",
+  "duration_seconds": 120,
+  "rate": 3,
+  "start_epoch": 1794772263.2838206,
+  "end_epoch": 1794772383.8672605,
+  "schedule_sha256": "da435271534e93ba11d64cb23e48c16738b62ceed97ce64a7653ed3545f4584e",
+  "cache_initial": "empty, verified reset on both warmed pods",
+  "keep_alive": false,
+  "planned": 360,
+  "sent": 360,
+  "completed": 358
+}

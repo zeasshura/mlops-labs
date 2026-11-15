@@ -1,0 +1,6 @@
+*
+!app.py
+!client.py
+!artifacts/
+!artifacts/**
+!requirements-service.txt

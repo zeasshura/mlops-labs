@@ -1,0 +1,68 @@
+{
+  "epoch": 1794773376.9191127,
+  "deployment": {
+    "availableReplicas": 2,
+    "conditions": [
+      {
+        "lastTransitionTime": "2026-11-15T19:13:23Z",
+        "lastUpdateTime": "2026-11-15T19:16:03Z",
+        "message": "ReplicaSet \"api-59bf8f58dc\" has successfully progressed.",
+        "reason": "NewReplicaSetAvailable",
+        "status": "True",
+        "type": "Progressing"
+      },
+      {
+        "lastTransitionTime": "2026-11-15T20:00:24Z",
+        "lastUpdateTime": "2026-11-15T20:00:24Z",
+        "message": "Deployment has minimum availability.",
+        "reason": "MinimumReplicasAvailable",
+        "status": "True",
+        "type": "Available"
+      }
+    ],
+    "observedGeneration": 16,
+    "readyReplicas": 2,
+    "replicas": 2,
+    "updatedReplicas": 2
+  },
+  "hpa": {
+    "conditions": [
+      {
+        "lastTransitionTime": "2026-11-15T19:58:57Z",
+        "message": "recommended size matches current size",
+        "reason": "ReadyForNewScale",
+        "status": "True",
+        "type": "AbleToScale"
+      },
+      {
+        "lastTransitionTime": "2026-11-15T19:59:12Z",
+        "message": "the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)",
+        "reason": "ValidMetricFound",
+        "status": "True",
+        "type": "ScalingActive"
+      },
+      {
+        "lastTransitionTime": "2026-11-15T20:02:42Z",
+        "message": "the desired replica count is less than the minimum replica count",
+        "reason": "TooFewReplicas",
+        "status": "True",
+        "type": "ScalingLimited"
+      }
+    ],
+    "currentMetrics": [
+      {
+        "resource": {
+          "current": {
+            "averageUtilization": 6,
+            "averageValue": "6m"
+          },
+          "name": "cpu"
+        },
+        "type": "Resource"
+      }
+    ],
+    "currentReplicas": 2,
+    "desiredReplicas": 2,
+    "lastScaleTime": "2026-11-15T20:02:42Z"
+  }
+}

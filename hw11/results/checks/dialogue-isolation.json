@@ -1,0 +1,34 @@
+[
+  {
+    "request_id": "428cd25d-f406-43e7-8473-50fc3ef0f832",
+    "pod": "api-59bf8f58dc-5qpjc",
+    "model_id": "simulated-model-A",
+    "runtime_sha256": "2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca",
+    "backend_mode": "simulated",
+    "part": 0,
+    "text": "SIMULATED 0",
+    "complete": true,
+    "queue_seconds": 0.0019747319965972565,
+    "cache_hit": true,
+    "warmup_finished_at_accept": true,
+    "history": [
+      "CONTROL_ALPHA_11"
+    ]
+  },
+  {
+    "request_id": "f09fb1b4-3e87-49a1-82a4-a064fe233602",
+    "pod": "api-59bf8f58dc-dhk7q",
+    "model_id": "simulated-model-A",
+    "runtime_sha256": "2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca",
+    "backend_mode": "simulated",
+    "part": 0,
+    "text": "SIMULATED 0",
+    "complete": true,
+    "queue_seconds": 0.0016257469978882,
+    "cache_hit": false,
+    "warmup_finished_at_accept": true,
+    "history": [
+      "CONTROL_BETA_11"
+    ]
+  }
+]

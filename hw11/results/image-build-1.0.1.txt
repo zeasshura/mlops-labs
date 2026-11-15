@@ -1,0 +1,38 @@
+STEP 1/10: FROM docker.io/library/python:3.12.12-slim
+STEP 2/10: WORKDIR /app
+--> Using cache ccb976e496a97e3783655282a5a71cd3831555dba0ba1eba67ff99bad5729a74
+--> ccb976e496a9
+STEP 3/10: ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1
+--> Using cache f86187a1b7786914358823d55221f4571cf5a6583a0e2bee04b02d3d41fe9136
+--> f86187a1b778
+STEP 4/10: COPY requirements-service.txt /app/
+--> Using cache 0b76be4e81428fb8427b10243db84318da45b1c2c078fc25730328fa0bb89205
+--> 0b76be4e8142
+STEP 5/10: RUN pip install --no-cache-dir -r requirements-service.txt
+--> Using cache 1c67c6d553c5819fe0d28a030b123c77628b7ca92951d88ab6ea1bf3b0bdb62c
+--> 1c67c6d553c5
+STEP 6/10: COPY app.py client.py /app/
+--> fef22d5fea62
+STEP 7/10: COPY artifacts /app/artifacts
+--> dedac5027eaa
+STEP 8/10: USER 10001
+--> 5e5347b1eeb7
+STEP 9/10: EXPOSE 8091
+--> ca50900e02aa
+STEP 10/10: CMD ["python", "-m", "uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8091", "--timeout-graceful-shutdown", "30", "--no-access-log"]
+COMMIT localhost/hw11-api:1.0.1
+--> 945787775f3f
+Successfully tagged localhost/hw11-api:1.0.1
+945787775f3f80c7064af54c3408f22cc2d62ed9a674306913844d3b5f1061df
+Copying blob sha256:a257f20c716c7b5d0474b1b5998f4d1090b573d90b82f764b8f1f1faeb4b524f
+Copying blob sha256:38d85a17b1111a95a0e407827441c6aa9da43d09ff3f1af3febe8017c4c8ffe7
+Copying blob sha256:c2a9fa0f49e59ec1a12af4d7e17adbd07a451685187864014235a8506b2c05de
+Copying blob sha256:a78468ad3279eed5c50477c62f98d1273a0fb7dfb383ad1c4b21c24bb3f908d1
+Copying blob sha256:394f1e7299946a92cda75f6f9adecb072a8c1c2f30ae7f27a0f0ce4f39b7a4da
+Copying blob sha256:439905c83a2cb5def9759f8cc4dcbd3c61d529daf1a45a61fae793c6de8b7571
+Copying blob sha256:09a3dda0f4062d310c5834ac7cbe9803dd8f6a52189c7a56c4b4d04094fac375
+Copying blob sha256:57678c39e951244f0c95da32ce1bcd0a2162b9fbfa88a5abd8e140d276cc8a4f
+Copying config sha256:945787775f3f80c7064af54c3408f22cc2d62ed9a674306913844d3b5f1061df
+Writing manifest to image destination
+using podman due to KIND_EXPERIMENTAL_PROVIDER
+enabling experimental podman provider

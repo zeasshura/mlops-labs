@@ -1,0 +1,4 @@
+{
+  "status": 200,
+  "body": "{\"request_id\": \"513c38bd-7fc0-4d17-a480-a65db4d6a05b\", \"pod\": \"api-d56574c89-n5pf4\", \"model_id\": \"simulated-model-A\", \"runtime_sha256\": \"2cbfcc2c2599d0df8999f8f80d015c710b6e96ce153936833f8c511cfc5fa4ca\", \"backend_mode\": \"simulated\", \"part\": 0, \"text\": \"SIMULATED 0\", \"complete\": true, \"queue_seconds\": 0.0005586150000453927, \"cache_hit\": false, \"warmup_finished_at_accept\": true, \"history\": []}\n"
+}

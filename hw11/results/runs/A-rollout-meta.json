@@ -1,0 +1,16 @@
+{
+  "run_id": "A-rollout",
+  "service": "balanced",
+  "traffic": "uniform",
+  "duration_seconds": 65,
+  "rate": 0.5,
+  "start_epoch": 1794769683.5372276,
+  "end_epoch": 1794769747.1882193,
+  "schedule_sha256": "c50a3041e1c30272135c2d9fa9fd251f7c1d8d24a4888e22deb82179850be8f3",
+  "cache_initial": "not reset; lifecycle experiment retains cache state",
+  "keep_alive": false,
+  "planned": 32,
+  "sent": 32,
+  "completed": 32,
+  "metadata_correction": "run_load was called with reset=False; previous static cache label was inaccurate"
+}

@@ -1,0 +1,15 @@
+{
+  "run_id": "B-affinity-hot-1",
+  "service": "sticky",
+  "traffic": "hot",
+  "duration_seconds": 120,
+  "rate": 3,
+  "start_epoch": 1794771440.0460424,
+  "end_epoch": 1794771564.3614101,
+  "schedule_sha256": "da435271534e93ba11d64cb23e48c16738b62ceed97ce64a7653ed3545f4584e",
+  "cache_initial": "empty, verified reset on both warmed pods",
+  "keep_alive": false,
+  "planned": 360,
+  "sent": 360,
+  "completed": 257
+}

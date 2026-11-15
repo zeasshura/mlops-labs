@@ -1,0 +1,123 @@
+{
+  "epoch": 1794774110.6773994,
+  "host_python": "3.12.15",
+  "kind": "kind v0.30.0 go1.24.6 linux/amd64",
+  "helm": "v3.18.6+gb76a950",
+  "kubectl": {
+    "clientVersion": {
+      "major": "1",
+      "minor": "34",
+      "gitVersion": "v1.34.0",
+      "gitCommit": "f28b4c9efbca5c5c0af716d9f2d5702667ee8a45",
+      "gitTreeState": "clean",
+      "buildDate": "2025-08-27T10:17:33Z",
+      "goVersion": "go1.24.6",
+      "compiler": "gc",
+      "platform": "linux/amd64"
+    },
+    "kustomizeVersion": "v5.7.1"
+  },
+  "podman": {
+    "Client": {
+      "APIVersion": "5.8.7",
+      "Version": "5.8.7",
+      "GoVersion": "go1.26.8-X:nodwarf5",
+      "GitCommit": "c593b672bf3db1173aebea565ebf1a724ea196dc",
+      "BuiltTime": "Wed Sep 16 03:00:00 2026",
+      "Built": 1789516800,
+      "BuildOrigin": "Fedora Project",
+      "OsArch": "linux/amd64",
+      "Os": "linux"
+    }
+  },
+  "node_info": {
+    "architecture": "amd64",
+    "containerRuntimeVersion": "containerd://2.1.3",
+    "kernelVersion": "7.2.8-200.fc44.x86_64",
+    "kubeletVersion": "v1.34.0",
+    "osImage": "Debian GNU/Linux 12 (bookworm)"
+  },
+  "node_capacity": {
+    "cpu": "8",
+    "ephemeral-storage": "241549Mi",
+    "hugepages-1Gi": "0",
+    "hugepages-2Mi": "0",
+    "memory": "16012464Ki",
+    "pods": "110"
+  },
+  "node_allocatable": {
+    "cpu": "8",
+    "ephemeral-storage": "241549Mi",
+    "hugepages-1Gi": "0",
+    "hugepages-2Mi": "0",
+    "memory": "16012464Ki",
+    "pods": "110"
+  },
+  "actual_limits": {
+    "Memory": 4294967296,
+    "MemorySwap": 4294967296,
+    "CpuQuota": 400000,
+    "CpuPeriod": 100000,
+    "PidsLimit": 4096
+  },
+  "images": {
+    "localhost/hw11-api:1.0.1": {
+      "Id": "945787775f3f80c7064af54c3408f22cc2d62ed9a674306913844d3b5f1061df",
+      "Size": 141480573,
+      "RepoDigests": [
+        "localhost/hw11-api@sha256:9e03b3dc913d7ce1f5760b06620a634aead977f41c3482cb4298223aa5505412"
+      ]
+    },
+    "docker.io/library/python:3.12.12-slim": {
+      "Id": "5265ced2e36c835ba9c04ed8be4eea1ec30d9523da97c7797bbc6d9a4b3fcfcb",
+      "Size": 123288129,
+      "RepoDigests": [
+        "docker.io/library/python@sha256:42f1689d6d6b906c7e829f9d9ec38491550344ac9adc01e464ff9a08df1ffb48",
+        "docker.io/library/python@sha256:f3fa41d74a768c2fce8016b98c191ae8c1bacd8f1152870a3f9f87d350920b7c"
+      ]
+    },
+    "docker.io/prom/prometheus:v3.5.0": {
+      "Id": "a3bc50fcb50fb1409287c32773d8fe799f6cad5511c4ba3e2e851784e7a05026",
+      "Size": 314192332,
+      "RepoDigests": [
+        "docker.io/prom/prometheus@sha256:63805ebb8d2b3920190daf1cb14a60871b16fd38bed42b857a3182bc621f4996",
+        "docker.io/prom/prometheus@sha256:8672a850efe2f9874702406c8318704edb363587f8c2ca88586b4c8fdb5cea24"
+      ]
+    },
+    "docker.io/grafana/grafana:12.1.1": {
+      "Id": "0a7de979b3131ff29c2cdd8ffd040ee63cdfc863f70ec3902eec6c47edfc32fd",
+      "Size": 733103212,
+      "RepoDigests": [
+        "docker.io/grafana/grafana@sha256:5749a0e982878aedaa2d320ed14d3bdce7a040a938f482258670009d419a597f",
+        "docker.io/grafana/grafana@sha256:a1701c2180249361737a99a01bc770db39381640e4d631825d38ff4535efa47d"
+      ]
+    },
+    "registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.17.0": {
+      "Id": "32acec6855323f46b0b3ed1b193d38312db76b46a107390f6ddaefc9d8a51713",
+      "Size": 63903223,
+      "RepoDigests": [
+        "registry.k8s.io/kube-state-metrics/kube-state-metrics@sha256:12d340f106edf923db88bd637666c864cb9d02b53b66a3976b535750cd2ef74d",
+        "registry.k8s.io/kube-state-metrics/kube-state-metrics@sha256:2bbc915567334b13632bf62c0a97084aff72a36e13c4dabd5f2f11c898c5bacd"
+      ]
+    },
+    "registry.k8s.io/metrics-server/metrics-server:v0.8.0": {
+      "Id": "b9e1e3849e07022817ebc1612858382f0c0b91d00e4dcd2996adc1df6ced26e9",
+      "Size": 83737288,
+      "RepoDigests": [
+        "registry.k8s.io/metrics-server/metrics-server@sha256:5dd31abb8093690d9624a53277a00d2257e7e57e6766be3f9f54cf9f54cddbc1",
+        "registry.k8s.io/metrics-server/metrics-server@sha256:89258156d0e9af60403eafd44da9676fd66f600c7934d468ccc17e42b199aee2"
+      ]
+    }
+  },
+  "metrics_api": {
+    "conditions": [
+      {
+        "lastTransitionTime": "2026-11-15T19:05:06Z",
+        "message": "all checks passed",
+        "reason": "Passed",
+        "status": "True",
+        "type": "Available"
+      }
+    ]
+  }
+}

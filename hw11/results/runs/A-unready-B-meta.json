@@ -1,0 +1,16 @@
+{
+  "run_id": "A-unready-B",
+  "service": "balanced",
+  "traffic": "uniform",
+  "duration_seconds": 35,
+  "rate": 0.5,
+  "start_epoch": 1794769808.208879,
+  "end_epoch": 1794769840.8127742,
+  "schedule_sha256": "c745c091f8d06f4fb86a0f200cfff0971ee3e41bb32a3992044501ed86a7431a",
+  "cache_initial": "not reset; lifecycle experiment retains cache state",
+  "keep_alive": false,
+  "planned": 17,
+  "sent": 17,
+  "completed": 17,
+  "metadata_correction": "run_load was called with reset=False; previous static cache label was inaccurate"
+}
