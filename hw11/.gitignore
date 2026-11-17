@@ -8,5 +8,4 @@ __pycache__/
 *.key
 *.pem
 
-# Local lecture supplied for reviewing the course case.
 /lecture11-extended.mp4

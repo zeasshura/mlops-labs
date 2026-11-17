@@ -1,2 +1,0 @@
-using podman due to KIND_EXPERIMENTAL_PROVIDER
-enabling experimental podman provider
